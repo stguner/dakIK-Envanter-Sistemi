@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+  margin: 0px !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+body {
+  margin: 0px !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem !important;
+}
+
+
+.form__radio-input {
+    display: none;
+  }
+  
+  .form__label-radio {
+    font-size: 0.8rem !important;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  
+  .form__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid #585858;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.9rem;
+    scale: 0.4;
+  }
+  .form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.3rem;
+    width: 1.3rem;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #55c57a;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .form__radio-input:checked ~ .form__label-radio .form__radio-button::after {
+    opacity: 1;
+  }
+
+  .form__radio-input-red {
+    display: none;
+  }
+  
+  .form__label-radio-red {
+    font-size: 0.8rem !important;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .form__radio-button-red {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid #585858;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.9rem;
+    scale: 0.4;
+  }
+  .form__radio-button-red::after {
+    content: "";
+    display: block;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ff0000;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .form__radio-input-red:checked ~ .form__label-radio-red .form__radio-button-red::after {
+    opacity: 1;
+  }
+
+#testencikdiv button a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+#testebasla:hover {
+  color: white;
+}
+
+#testencikdiv #cikisYap:hover {
+  color: white !important;
+}
+
+#kullanilmisTCKN button:hover{
+  color:white;
+}
+
+#kullanilmisTCKN i:hover{
+  scale: 1.5;
+}
+
+#hatamodal button:hover{
+  color:white;
+}
+
+#hatamodal i:hover{
+  scale: 1.5;
+}
+
+input::placeholder {
+  font-size: 13px;
+}
+
+
+
+
+
+  
+
+
+
+
+
+  
