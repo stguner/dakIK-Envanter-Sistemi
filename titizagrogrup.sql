@@ -27,6 +27,11 @@ SET time_zone = "+00:00";
 -- Tablo için tablo yapısı `admin`
 --
 
+CREATE DATABASE titizagrogrup;
+USE titizagrogrup;
+
+
+
 CREATE TABLE `admin` (
   `kullaniciAdi` varchar(20) COLLATE utf8mb4_turkish_ci NOT NULL,
   `sifre` varchar(20) COLLATE utf8mb4_turkish_ci NOT NULL,
