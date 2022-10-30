@@ -13,15 +13,35 @@ switch($_GET['mode']){
             $dogumTarihi = $_POST["dogumTarihi"];
             $baslangic = $_POST["baslangic"];
             $burc = $_POST["burc"];
+
+            $client = new SoapClient("https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL");
+            $arr = []; // İlk index Mernis kontrolü dogru/yanlis, ikinci index kullanilmis tckn 
+            try {
+                $result = $client->TCKimlikNoDogrula([
+                    'TCKimlikNo' => $tckn,
+                    'Ad' => strtoupper($kullaniciAdi),
+                    'Soyad' => $kullaniciSoyadi,
+                    'DogumYili' => explode('.', $dogumTarihi)[0]
+                ]);
+                if ($result->TCKimlikNoDogrulaResult) {
+                    $arr[0] = true;
+                } else {
+                    $arr[0] = false;
+                }
+            } catch (Exception $e) {
+                echo $e->faultstring;
+            }
         
             $kontrol = $conn->query("SELECT * FROM `cevaplar` WHERE tckn=$tckn");
             $count = $kontrol->rowCount();
-            if($count == 0){
+            if($arr[0] && $count == 0){
                 $formKontrol = $conn->query("INSERT INTO cevaplar (tckn,telNo,ad,soyad,cinsiyet,dogumTarihi,email,burc,baslangic) VALUES ('$tckn','$telNo','$kullaniciAdi','$kullaniciSoyadi','$cinsiyet','$dogumTarihi','$email','$burc','$baslangic')");
-                echo true;
+                $arr[1] = true;
             }else{
-                echo false;
+                $arr[1] = false;
             }
+
+            echo json_encode($arr); // JS'e array göndermek için kullanırız
         }
         break;
     

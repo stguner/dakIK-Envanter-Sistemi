@@ -117,7 +117,9 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 		const kullaniciSoyadi = document.getElementById("kullaniciSoyadi").value;
 		const telNo = document.getElementById("telNo").value;
 		const email = document.getElementById("email").value;
-		const cinsiyet = document.getElementById("cinsiyet").value;
+		// const cinsiyet = document.getElementById("cinsiyet").value;
+		let cinsiyetler = document.getElementsByName("gender");
+		let cinsiyet = (cinsiyetler[0].checked) ? "Erkek" : "Kadın";
 		const dogumTarihi = document.getElementById("dogumTarihi").value;
 		const baslangic = document.getElementById("field").value;
 
@@ -167,10 +169,14 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 			type: "POST",
 			data: "tckn=" + tckn + '&kullaniciAdi=' + kullaniciAdi + '&baslangic=' + baslangic + '&kullaniciSoyadi=' + kullaniciSoyadi + '&telNo=' + telNo + '&email=' + email + '&cinsiyet=' + cinsiyet + '&dogumTarihi=' + dogumTarihi + '&burc=' + burc + '&baslangic=' + baslangic,
 			success: function (data) {
-				if (data == true) {
-					ucuncuSayfaAc();
-				} else {
+				let arr = JSON.parse(data); // PHP'den array almak için kullanırız
+				if (!arr[0]) {
+					document.getElementById("mernis_hata").style.display = 'block';
+				} else if(!arr[1]) {
+					document.getElementById("mernis_hata").style.display = 'none';
 					kullanilmisTCKN();
+				} else {
+					ucuncuSayfaAc();
 				}
 			}
 		});
@@ -233,7 +239,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 						$("#sorular").html('<span><b>' + gercekSoruSirasi + '. </span><span id="sorular" style="font-size:12px;"> Size en yakın olduğunu düşündüğünüz seçenek hangisi?</b></span>');
 					}
 					$("#sorudurumu").html('<span class="font-size-sm" id="sorudurumu">KT' + gercekSoruSirasi + ' - ' + gercekSoruSirasi + '/' + totalSoruSayisi + '</span>');
-					$("#devambuton").html('<button type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1]) + ')">Devam Et</button>');
+					$("#devambuton").html('<button disabled type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1]) + ')">Devam Et</button>');
 
 
 					$("#soruradio1").val(soruSirasiSplitted[gercekSoruSirasi - 1] + '-A-1');
@@ -266,7 +272,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 					$("#girisCumlesi").html('<p style="color: black; font-size:10px; margin-bottom:10px;" id="girisCumlesi"> (Aşağıdaki sizin için hazırladığımız, Davranış Testindeki her bir soru için yer alan <b>5 adet </b>ölçeklendirmelerden kendinize en uygun olan <b> 1 (bir) tanesini </b> seçiniz.)</p> </p>');
 					$("#sorular").html('<span><b>' + davranisTestiid + '. </span><span id="sorular" style="font-size:12px;">' + msg + '</b></span>');
 					$("#sorudurumu").html('<span class="font-size-sm" id="sorudurumu">DT' + davranisTestiid + '-' + gercekSoruSirasi + '/' + totalSoruSayisi + '</span>');
-					$("#devambuton").html('<button type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1] - 35) + ')">Devam Et</button>');
+					$("#devambuton").html('<button disabled type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1] - 35) + ')">Devam Et</button>');
 
 					$("#soruradio1").val((soruSirasiSplitted[gercekSoruSirasi - 1] - kisilikTestiSoruSayisi) + '-0-2');
 					$("#soruradio2").val((soruSirasiSplitted[gercekSoruSirasi - 1] - kisilikTestiSoruSayisi) + '-1-2');
@@ -305,7 +311,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 					$("#girisCumlesi").html('<p style="color: black;font-size:10px; margin-bottom:10px;" id="girisCumlesi"> (Envanter Testindeki her bir soru için yer alan <b>5 adet</b> ölçeklendirmelerden kendinize en uygun olan <b>1 tanesini</b> seçiniz.)</p>');
 					$("#sorular").html('<span><b>' + envanterTestiid + '.</b> </span><span id="sorular" style="font-size:12px;">' + msg + '</span>');
 					$("#sorudurumu").html('<span class="font-size-sm" id="sorudurumu">ET' + envanterTestiid + '-' + gercekSoruSirasi + '/' + totalSoruSayisi + '</span>');
-					$("#devambuton").html('<button type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + ')">Devam Et</button>');
+					$("#devambuton").html('<button disabled type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + ')">Devam Et</button>');
 					$("#soruradio1").val((soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + '-1-3');
 					$("#soruradio2").val((soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + '-2-3');
 					$("#soruradio3").val((soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + '-3-3');
@@ -388,7 +394,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 						}
 						$("#sorular").html('<span><b>' + gercekSoruSirasi + '. </span><span id="sorular" style="font-size:12px;"> Size en yakın olduğunu düşündüğünüz seçenek hangisi?</b></span>');
 						$("#sorudurumu").html('<span class="font-size-sm" id="sorudurumu">KT' + gercekSoruSirasi + ' - ' + gercekSoruSirasi + '/' + totalSoruSayisi + '</span>');
-						$("#devambuton").html('<button type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1]) + ')">Devam Et</button>');
+						$("#devambuton").html('<button disabled type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1]) + ')">Devam Et</button>');
 
 
 						$("#soruradio1").val(soruSirasiSplitted[gercekSoruSirasi - 1] + '-A-1');
@@ -418,7 +424,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 						$("#girisCumlesi").html('<p style="color: black; font-size:10px; margin-bottom:10px;" id="girisCumlesi"> (Aşağıdaki sizin için hazırladığımız, Davranış Testindeki her bir soru için yer alan <b>5 adet </b>ölçeklendirmelerden kendinize en uygun olan <b> 1 (bir) tanesini </b> seçiniz.)</p> </p>');
 						$("#sorular").html('<span><b>' + davranisTestiid + '. </span><span id="sorular" style="font-size:12px;">' + msg + '</b></span>');
 						$("#sorudurumu").html('<span class="font-size-sm" id="sorudurumu">DT' + davranisTestiid + '-' + gercekSoruSirasi + '/' + totalSoruSayisi + '</span>');
-						$("#devambuton").html('<button type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1] - 35) + ')">Devam Et</button>');
+						$("#devambuton").html('<button disabled type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[gercekSoruSirasi - 1] - 35) + ')">Devam Et</button>');
 
 						$("#soruradio1").val((soruSirasiSplitted[gercekSoruSirasi - 1] - kisilikTestiSoruSayisi) + '-0-2');
 						$("#soruradio2").val((soruSirasiSplitted[gercekSoruSirasi - 1] - kisilikTestiSoruSayisi) + '-1-2');
@@ -453,7 +459,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 						$("#girisCumlesi").html('<p style="color: black;font-size:10px; margin-bottom:10px;" id="girisCumlesi"> (Envanter Testindeki her bir soru için yer alan <b>5 adet</b> ölçeklendirmelerden kendinize en uygun olan <b>1 tanesini</b> seçiniz.)</p>');
 						$("#sorular").html('<span><b>' + envanterTestiid + '. </span><span id="sorular style="font-size:12px;"">' + msg + '</b></span>');
 						$("#sorudurumu").html('<span class="font-size-sm" id="sorudurumu">ET' + envanterTestiid + '-' + gercekSoruSirasi + '/' + totalSoruSayisi + '</span>');
-						$("#devambuton").html('<button type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + ')">Devam Et</button>');
+						$("#devambuton").html('<button disabled type="button" class="btn btn-primary py-0" onclick="sorugetir(' + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + ')">Devam Et</button>');
 						$("#soruradio1").val((soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + '-1-3');
 						$("#soruradio2").val((soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + '-2-3');
 						$("#soruradio3").val((soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS) + '-3-3');
@@ -491,9 +497,11 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 
 function radiolar() {
 	document.getElementById("radiobuttonlar").innerHTML = '<label class="form-control2"><input id="soruradio1" onchange="cevapyaz(this)" type="radio" name="radio-styled-color"> <span id="c1"></span></label><br><label class="form-control2"><input id="soruradio2" onchange="cevapyaz(this)" type="radio" name="radio-styled-color"> <span id="c2"></span></label><br><label class="form-control2"><input id="soruradio3" onchange="cevapyaz(this)" type="radio" name="radio-styled-color"> <span id="c3"></span></label><br><label class="form-control2"><input id="soruradio4" onchange="cevapyaz(this)" type="radio" name="radio-styled-color"> <span id="c4"></span></label><br><label class="form-control2"><input id="soruradio5" onchange="cevapyaz(this)" type="radio" name="radio-styled-color"> <span id="c5"></span></label>';
+	document.getElementById("devambuton").children[0].disabled = true;
 }
 
 function cevapyaz(e) {
+	document.getElementById("devambuton").children[0].disabled = false;
 	const tckn = document.getElementById("tckn").value;
 	$.ajax({
 		type: 'POST',
@@ -524,7 +532,7 @@ function ilkHarfBuyuk() { //Kullanıcı Adındaki İlk Harfleri Büyük Yazdır�
 
 	var parca = cumle.split(" ");
 	for (var i = 0; i < parca.length; i++) {
-		var j = parca[i].charAt(0).toUpperCase();
+		var j = parca[i].charAt(0).toLocaleUpperCase("tr-TR");
 		parca[i] = j + parca[i].substr(1).toLowerCase();
 	}
 	document.getElementById("kullaniciAdi").value = parca.join(" ");
@@ -532,7 +540,7 @@ function ilkHarfBuyuk() { //Kullanıcı Adındaki İlk Harfleri Büyük Yazdır�
 
 function soyadBuyuk() { // Kullanıcı Soyadını Büyük Yazdırır
 	var x = document.getElementById("kullaniciSoyadi");
-	x.value = x.value.toUpperCase();
+	x.value = x.value.toLocaleUpperCase("tr-TR");
 }
 
 

@@ -103,9 +103,6 @@ body {
   color: black !important;
 }
 
-#testebasla:hover {
-  color: white;
-}
 
 #testencikdiv #cikisYap:hover {
   color: white !important;
@@ -131,8 +128,16 @@ input::placeholder {
   font-size: 13px;
 }
 
+/* Number inputların sağ  tarafındaki ok işaretlerini kaldırmak için */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
-
+#devambuton > button {
+  font-size: small;
+}
 
 
   

@@ -446,7 +446,7 @@ include 'config.php';
 
 								<div id="testebasladiv" onclick="ikinciSayfaAc()"
 									style="display: none; margin-top: 1%; margin-bottom: 1%; text-align: center; padding-bottom: 10px;">
-									<button type="submit" id="testebasla" class="btn bg-primary py-0">Devam
+									<button type="submit" id="testebasla" class="btn text-white bg-primary py-0">Devam
 										Et</button>
 								</div>
 
@@ -521,37 +521,47 @@ include 'config.php';
 						<div class="row m-0" style="display: none; " id="div2">
 
 							<div class="col-md-12">
-								<h6 class="mb-0 font-weight-semibold" style="text-decoration:underline;">
+								<h6 class="mb-2 font-weight-semibold">
 									KİŞİSEL BİLGİLERİNİZ
 								</h6>
 							</div>
-							<div class="col-md-12 pt-2" style="text-align: inherit;">
+							<!-- <div class="col-md-12 pt-2" style="text-align: inherit;">
 								<span class="d-block">
-									<p class="m-0">Bu formu doldurduktan sonra gelen 114 durum için
-										<b>5 cevaptan </b> kendinize en
-										uygun olan <b>sadece 1 tanesini</b>
-										seçiniz.
+									<p class="m-0">Bu formu doldurduktan sonra gelen 114 durum için 
+										kendinize en uygun olan cevabı seçiniz.
 									</p>
 								</span>
-							</div>
+							</div> -->
 							<!-- Zamanı bu input sayesinde alıyorum-->
 							<input id="field" style="display:none;" type="text" name="field" value="<?php echo date('m.d.y H:i:s'); ?>" size="11" />
 							<hr>
 							<div class="row m-0">
 
-								<div class="col-md-6 pb-3">
+								<div class="col-md-4 pb-3">
 									<label class="col-form-label col-lg-2 font-weight-semibold w-100">TCKN</label>
 									<div class="col-lg-10">
 										<div class="position-relative">
-											<input type="text" maxlength="11" name="tckn" id="tckn" class="form-control"
+											<input type="number" maxlength="11" name="tckn" id="tckn" class="form-control"
 												required>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6 pb-3">
+								<div class="col-md-4 pb-3">
+									<div>
+										<label class="col-form-label col-lg-2 font-weight-semibold w-100">Doğum
+											Tarihi</label>
+										<div class="col-lg-10">
+											<div class="position-relative">
+												<input type="date" name="dogumTarihi" class="form-control"
+													id="dogumTarihi" required>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 pb-3">
 									<label
 										class="col-form-label col-lg-2 font-weight-semibold w-100">Cinsiyetiniz</label>
-										<div class="col-lg-10">
+										<!-- <div class="col-lg-10">
 										<div class="position-relative">
 											<select id="cinsiyet" name="cinsiyet" class="form-control" required>
 												<option value="">Seçiniz</option>
@@ -559,7 +569,17 @@ include 'config.php';
 												<option value="Erkek">Erkek</option>
 											</select>
 										</div>
-										</div>
+										</div> -->
+										<div class="form-group">
+                                    <input type="radio" class="btn-check"
+                                           style="font-size: smaller" name="gender" value="Erkek" id="inputGender" autocomplete="off" checked>
+                                    <label class="btn btn-sm btn-outline-primary" style="padding: .25rem" for="inputGender">Erkek</label>
+
+                                    <input type="radio" class="btn-check"
+                                           style="font-size: smaller" name="gender" value="Kadın" id="inputGender2" autocomplete="off">
+                                    <label class="btn btn-sm btn-outline-danger" style="padding: .25rem" for="inputGender2">Kadın</label>
+
+                                </div>
 								</div>
 							</div>
 
@@ -592,13 +612,13 @@ include 'config.php';
 							</div>
 							<div class="row m-0">
 								<div class="col-md-6 pb-3">
-									<div>
-										<label class="col-form-label col-lg-2 font-weight-semibold w-100">Doğum
-											Tarihi</label>
+								<div>
+									<label class="col-form-label col-lg-2 font-weight-semibold w-100">Mail
+										Adresi</label>
 										<div class="col-lg-10">
 											<div class="position-relative">
-												<input type="date" name="dogumTarihi" class="form-control"
-													id="dogumTarihi" required>
+												<input type="text" name="email" id="email" class="form-control" maxlength="60"
+													required>
 											</div>
 										</div>
 									</div>
@@ -616,7 +636,7 @@ include 'config.php';
 									</div>
 								</div>
 							</div>
-							<div class="col-md-12 pb-3" style="text-align:center; justify-content:center;">
+							<!-- <div class="col-md-12 pb-3" style="text-align:center; justify-content:center;">
 								<div>
 									<div>
 										<label class="col-form-label col-lg-2 font-weight-semibold w-100">Mail
@@ -627,15 +647,21 @@ include 'config.php';
 											</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div style="display:none;" id="soruGetirRandom"></div>
 							<div style="display:none;" id="sayac">1</div>
 							<div style="display:none;" id="sayac2"></div>
 							<div class="col-md-12 pb-3" style="text-align: center">
 								<button type="submit" name="testebasla" id="testebasla" onclick="formKontrol()"
-									class="btn bg-primary py-0">Devam Et</button>
+									class="btn text-white bg-primary py-0">Devam Et</button>
 							</div>
+							<div class="col-md-12 pb-3">
+								<div id="mernis_hata" class="alert alert-danger" role="alert" style="display:none;">
+									Bilgilerinizi kontrol edip tekrar deneyiniz.
+								</div>
+							</div>
+
 						</div>
 						<div id="hatamodal" class="modal fade" tabindex="-1" style="padding-right: 17px; display: none; z-index:11;">
 							<div class="modal-dialog">
@@ -699,10 +725,10 @@ include 'config.php';
 							<div class="progress mb-2" style="padding-left: 0px; padding-right: 0px;">
 								<div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
 									id="loadingbar" style="width: 0%;"></div>
-								<div class="progress-bar progress-bar-striped progress-bar-animated"
-									id="loadingbar1" style="width: 0%;background-color:#FFE599;"></div>
-								<div class="progress-bar progress-bar-striped progress-bar-animated"
-									id="loadingbar2" style="width: 0%;background-color:#A7FFEE"></div>	
+								<div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+									id="loadingbar1" style="width: 0%"></div>
+								<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+									id="loadingbar2" style="width: 0%;"></div>	
 							</div>
 							
 							<div class="col-md-12">
@@ -712,7 +738,7 @@ include 'config.php';
 									<span class="font-size-sm" id="sorudurumu">KT1 - 1/114</span>
 								</div>
 								<div class="alert alert-info alert-styled-left alert-dismissible py-0" id="sorular" style="margin-bottom: 7px;padding-left: 3px;">
-									<span class="font-weight-semibold"><b>1.</b> </span><span id="sorular" style="font-size:14px;"><b>Size en yakın olduğunu düşündüğünüz seçenek hangisi?</b></span>
+									<span class="font-weight-semibold"><b>1.</b> </span><span id="sorular" style="font-size:15px;"><b>Size en yakın olduğunu düşündüğünüz seçenek hangisi?</b></span>
 								</div>
 
 								<div class="toast-body">
@@ -756,13 +782,15 @@ include 'config.php';
 
 								<div class="row">
 									<div class="col-md-6 w-50">
-										<button type="button" id="soruyuAtla" class="btn btn-secondary py-0" onclick="sorugetir(1000)">Soruyu Atla</button>
+										<button style="font-size: small" type="button" id="soruyuAtla" class="btn btn-secondary py-0" onclick="sorugetir(1000)">Soruyu Atla</button>
 									</div>
 									<div id="devambuton" class="col-md-6 w-50" style="text-align:right;">
-										<button type="button" class="btn btn-primary py-0" onclick="sorugetir(2)">Devam Et</button>
+										<button disabled type="button" class="btn btn-primary py-0" 
+										onclick="sorugetir(2)">Devam Et</button>
 									</div>
 								</div>
 								<br>
+								<!--Bunu artık kaldırabiliriz çünkü devam butonu bir seçenek seçilinceye kadar disabled kalacak, atla butonu yeterli -->
 								<div id="cevapsizalert" style="display: none;"
 									class="alert alert-warning alert-styled-right alert-dismissible">
 									 Sanırım soruyu <a href="#" class="alert-link">cevapsız olarak</a> geçmeyi tercih ettin. Lütfen bunun için <b>'Soruyu Atla'</b> seçeneğini dene.
@@ -777,8 +805,11 @@ include 'config.php';
 							<div class="col-md-12">
 								<div class="d-flex" style="justify-content:center;">
 								</div>
+								<img src="../assets/okey.gif" alt="Testi bitirdiniz"  width="250" />
 								<h3 style="color:green;">Testi bitirdiniz.</h3>
-								<p>Soruları cevapladığınız için teşekkürler.</p>
+								<p>Sorularımızı cevaplandırdığınız için teşekkürler. İnsan Kaynakları departmanı test sonuçlarınızı
+									değerlendirip iletişim adresinize dönüş sağlayacaktır.
+								</p>
 							</div>
 						</div>
 						<!-- Dördüncü Sayfa SONU -->
