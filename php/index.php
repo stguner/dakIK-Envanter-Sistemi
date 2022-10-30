@@ -805,8 +805,11 @@ include 'config.php';
 							<div class="col-md-12">
 								<div class="d-flex" style="justify-content:center;">
 								</div>
+								<img src="../assets/okey.gif" alt="Testi bitirdiniz"  width="250" />
 								<h3 style="color:green;">Testi bitirdiniz.</h3>
-								<p>Soruları cevapladığınız için teşekkürler.</p>
+								<p>Sorularımızı cevaplandırdığınız için teşekkürler. İnsan Kaynakları departmanı test sonuçlarınızı
+									değerlendirip iletişim adresinize dönüş sağlayacaktır.
+								</p>
 							</div>
 						</div>
 						<!-- Dördüncü Sayfa SONU -->
