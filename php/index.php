@@ -725,10 +725,10 @@ include 'config.php';
 							<div class="progress mb-2" style="padding-left: 0px; padding-right: 0px;">
 								<div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
 									id="loadingbar" style="width: 0%;"></div>
-								<div class="progress-bar progress-bar-striped progress-bar-animated"
-									id="loadingbar1" style="width: 0%;background-color:#FFE599;"></div>
-								<div class="progress-bar progress-bar-striped progress-bar-animated"
-									id="loadingbar2" style="width: 0%;background-color:#A7FFEE"></div>	
+								<div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+									id="loadingbar1" style="width: 0%"></div>
+								<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+									id="loadingbar2" style="width: 0%;"></div>	
 							</div>
 							
 							<div class="col-md-12">
@@ -738,7 +738,7 @@ include 'config.php';
 									<span class="font-size-sm" id="sorudurumu">KT1 - 1/114</span>
 								</div>
 								<div class="alert alert-info alert-styled-left alert-dismissible py-0" id="sorular" style="margin-bottom: 7px;padding-left: 3px;">
-									<span class="font-weight-semibold"><b>1.</b> </span><span id="sorular" style="font-size:14px;"><b>Size en yakın olduğunu düşündüğünüz seçenek hangisi?</b></span>
+									<span class="font-weight-semibold"><b>1.</b> </span><span id="sorular" style="font-size:15px;"><b>Size en yakın olduğunu düşündüğünüz seçenek hangisi?</b></span>
 								</div>
 
 								<div class="toast-body">
@@ -782,13 +782,15 @@ include 'config.php';
 
 								<div class="row">
 									<div class="col-md-6 w-50">
-										<button type="button" id="soruyuAtla" class="btn btn-secondary py-0" onclick="sorugetir(1000)">Soruyu Atla</button>
+										<button style="font-size: small" type="button" id="soruyuAtla" class="btn btn-secondary py-0" onclick="sorugetir(1000)">Soruyu Atla</button>
 									</div>
 									<div id="devambuton" class="col-md-6 w-50" style="text-align:right;">
-										<button type="button" class="btn btn-primary py-0" onclick="sorugetir(2)">Devam Et</button>
+										<button disabled type="button" class="btn btn-primary py-0" 
+										onclick="sorugetir(2)">Devam Et</button>
 									</div>
 								</div>
 								<br>
+								<!--Bunu artık kaldırabiliriz çünkü devam butonu bir seçenek seçilinceye kadar disabled kalacak, atla butonu yeterli -->
 								<div id="cevapsizalert" style="display: none;"
 									class="alert alert-warning alert-styled-right alert-dismissible">
 									 Sanırım soruyu <a href="#" class="alert-link">cevapsız olarak</a> geçmeyi tercih ettin. Lütfen bunun için <b>'Soruyu Atla'</b> seçeneğini dene.
