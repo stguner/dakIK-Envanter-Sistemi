@@ -117,7 +117,9 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 		const kullaniciSoyadi = document.getElementById("kullaniciSoyadi").value;
 		const telNo = document.getElementById("telNo").value;
 		const email = document.getElementById("email").value;
-		const cinsiyet = document.getElementById("cinsiyet").value;
+		// const cinsiyet = document.getElementById("cinsiyet").value;
+		let cinsiyetler = document.getElementsByName("gender");
+		let cinsiyet = (cinsiyetler[0].checked) ? "Erkek" : "Kadın";
 		const dogumTarihi = document.getElementById("dogumTarihi").value;
 		const baslangic = document.getElementById("field").value;
 
@@ -167,10 +169,14 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 			type: "POST",
 			data: "tckn=" + tckn + '&kullaniciAdi=' + kullaniciAdi + '&baslangic=' + baslangic + '&kullaniciSoyadi=' + kullaniciSoyadi + '&telNo=' + telNo + '&email=' + email + '&cinsiyet=' + cinsiyet + '&dogumTarihi=' + dogumTarihi + '&burc=' + burc + '&baslangic=' + baslangic,
 			success: function (data) {
-				if (data == true) {
-					ucuncuSayfaAc();
-				} else {
+				let arr = JSON.parse(data); // PHP'den array almak için kullanırız
+				if (!arr[0]) {
+					document.getElementById("mernis_hata").style.display = 'block';
+				} else if(!arr[1]) {
+					document.getElementById("mernis_hata").style.display = 'none';
 					kullanilmisTCKN();
+				} else {
+					ucuncuSayfaAc();
 				}
 			}
 		});
@@ -524,7 +530,7 @@ function ilkHarfBuyuk() { //Kullanıcı Adındaki İlk Harfleri Büyük Yazdır�
 
 	var parca = cumle.split(" ");
 	for (var i = 0; i < parca.length; i++) {
-		var j = parca[i].charAt(0).toUpperCase();
+		var j = parca[i].charAt(0).toLocaleUpperCase("tr-TR");
 		parca[i] = j + parca[i].substr(1).toLowerCase();
 	}
 	document.getElementById("kullaniciAdi").value = parca.join(" ");
@@ -532,7 +538,7 @@ function ilkHarfBuyuk() { //Kullanıcı Adındaki İlk Harfleri Büyük Yazdır�
 
 function soyadBuyuk() { // Kullanıcı Soyadını Büyük Yazdırır
 	var x = document.getElementById("kullaniciSoyadi");
-	x.value = x.value.toUpperCase();
+	x.value = x.value.toLocaleUpperCase("tr-TR");
 }
 
 
