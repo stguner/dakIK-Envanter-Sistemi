@@ -99,13 +99,13 @@ include 'config.php';
 										<td><?php echo $i; $i++; ?></td>
 										<td><?php echo $row['ad'] ?></td>
 										<td><?php echo $row['soyad'] ?></td>
-										<td><?php echo $row['baslangic'] ?></td>
-										<td><?php echo $row['bitis'] ?></td>
+										<td><?php $parca2 = explode(" ",$row['baslangic']); $parca3 = explode(".",$parca2[0]); echo $parca3[1],'.',$parca3[0],'.',$parca3[2],' ',$parca2[1] ?></td>
+										<td><?php $parca = explode(" ",$row['bitis']); $parca1 = explode(".",$parca[0]); echo $parca1[1],'.',$parca1[0],'.',$parca1[2],' ',$parca[1] ?></td>
 										<td><?php echo $row['telNo'] ?></td>
 										<td><?php echo $row['cinsiyet'] ?></td>
 										<td><?php echo $row['tckn'] ?></td>
 										<td><?php echo $row['email'] ?></td>
-										<td><?php echo $row['dogumTarihi'] ?></td>
+										<td><?php echo $row['dogumTarihi'][8],$row['dogumTarihi'][9]?><span>.</span><?php echo $row['dogumTarihi'][5],$row['dogumTarihi'][6]?><span>.</span><?php echo $row['dogumTarihi'][0],$row['dogumTarihi'][1],$row['dogumTarihi'][2],$row['dogumTarihi'][3]?></td>
 										<td><a href="adminKisiBilgileri.php?tckn=<?php echo $row['tckn'] ?>"><button
 											class="btn btn-primary py-0">Gözat</button></a></td>
 									</tr>

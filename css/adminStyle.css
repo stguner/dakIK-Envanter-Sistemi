@@ -103,9 +103,15 @@ input[type="text"] {
   body {
     width: 100%;
     margin: 0;
-    overflow: hidden;
     background: #222A31;
   }
+
+ .bilgiler td {
+  padding-right: 0px;
+  padding-left: 2px;
+  padding-top: 2px;
+  padding-bottom: 0px;
+}
   
   
   

@@ -61,7 +61,7 @@ $kullanicisor->execute(array(
 	<link rel="stylesheet" href="../css/adminStyle.css">
 </head>
 
-<body onload="sonucAc();">
+<body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 d-flex w-100" style="justify-content:space-between;">
 		<div class="leftSideNavbar w-50" style="display:flex; justify-content:left; padding-left: 16px;">
 			<a class="navbar-brand" href="loggedinAdminPanel.php"> dakİK Envanter Testleri</a>
@@ -92,7 +92,7 @@ $kullanicisor->execute(array(
 			</div>
 		</div>
 	</nav>
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<!-- Right Side of Container-->
 			<div class="col-md-12">
@@ -103,12 +103,7 @@ $kullanicisor->execute(array(
 						<br>
 						Envanter Testi Sonuçları
 					</h1>
-					<div style="text-align: center;">
-						<button type="button" class="btn btn-primary" onclick="sonucAc()" id="sonucAc"> Sonuçları Açmak
-							İçin Butona Tıklayınız </button>
-					</div>
 					<p id="dgt"></p>
-					<p></p>
 					<hr>
 					<div class="bilgiler table-responsive">
 						<table class="table table-striped table-hover table-bordered text-nowrap">
@@ -134,18 +129,13 @@ $kullanicisor->execute(array(
 										<?php echo $kullanicicek['soyad'] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="baslangic">
-										<?php echo $kullanicicek['baslangic'][0],$kullanicicek['baslangic'][1],$kullanicicek['baslangic'][2],$kullanicicek['baslangic'][3],$kullanicicek['baslangic'][4],$kullanicicek['baslangic'][5],$kullanicicek['baslangic'][6],$kullanicicek['baslangic'][7]; ?>
-										<br>
-										<?php echo $kullanicicek['baslangic'][9],$kullanicicek['baslangic'][10],$kullanicicek['baslangic'][11],$kullanicicek['baslangic'][12],$kullanicicek['baslangic'][13],$kullanicicek['baslangic'][14],$kullanicicek['baslangic'][15],$kullanicicek['baslangic'][16]; ?>
+										<?php echo $kullanicicek['baslangic'][3],$kullanicicek['baslangic'][4],$kullanicicek['baslangic'][2],$kullanicicek['baslangic'][0],$kullanicicek['baslangic'][1],$kullanicicek['baslangic'][5],$kullanicicek['baslangic'][6],$kullanicicek['baslangic'][7],' - ',$kullanicicek['baslangic'][9],$kullanicicek['baslangic'][10],$kullanicicek['baslangic'][11],$kullanicicek['baslangic'][12],$kullanicicek['baslangic'][13],$kullanicicek['baslangic'][14],$kullanicicek['baslangic'][15],$kullanicicek['baslangic'][16]; ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="bitis">
 										<?php if($kullanicicek['bitis'] != "") {
-											echo $kullanicicek['bitis'][0],$kullanicicek['bitis'][1],$kullanicicek['bitis'][2],$kullanicicek['bitis'][3],$kullanicicek['bitis'][4],$kullanicicek['bitis'][5],$kullanicicek['bitis'][6],$kullanicicek['bitis'][7]; }else{
+											echo $kullanicicek['bitis'][3],$kullanicicek['bitis'][4],$kullanicicek['bitis'][2],$kullanicicek['bitis'][0],$kullanicicek['bitis'][1],$kullanicicek['bitis'][5],$kullanicicek['bitis'][6],$kullanicicek['bitis'][7],' - ',$kullanicicek['bitis'][9],$kullanicicek['bitis'][10],$kullanicicek['bitis'][11],$kullanicicek['bitis'][12],$kullanicicek['bitis'][13],$kullanicicek['bitis'][14],$kullanicicek['bitis'][15],$kullanicicek['bitis'][16]; }else{
 												echo "Bitirilmemiş";
 											} ?>
-										<br>
-										<?php if($kullanicicek['bitis'] != "") {
-											echo $kullanicicek['bitis'][9],$kullanicicek['bitis'][10],$kullanicicek['bitis'][11],$kullanicicek['bitis'][12],$kullanicicek['bitis'][13],$kullanicicek['bitis'][14],$kullanicicek['bitis'][15],$kullanicicek['bitis'][16]; } ?>
 									</td>
 									<div style="display:none;" id="realTelNumber"></div>
 									<td style="overflow:hidden; white-space:nowrap; " id="telNo">
@@ -154,10 +144,20 @@ $kullanicisor->execute(array(
 										<a href="https://wa.me/90<?php echo $kullanicicek['telNo'] ?>"
 											target="_blank"><i class="fa-brands fa-whatsapp"
 												style="scale:1.5; margin-left:10px;"></i></a>
-										<a href="mailto:<?php echo $kullanicicek['email'] ?>"><i class="fa-solid fa-paper-plane" style="margin-left:10px;cursor:pointer; color:blue;"></i></a>
+										<a href="mailto:<?php echo $kullanicicek['email'] ?>"><i
+												class="fa-solid fa-paper-plane"
+												style="margin-left:10px;cursor:pointer; color:blue;"></i></a>
 										<i class="fa-solid fa-eye" id="telNoIcon" onclick="telNoAc()"
 											style="scale:1.5; margin-left:10px;color:blue; cursor:pointer;"></i>
-										<p style="margin-bottom:0px; display:none; padding-top:5px;" id="telNoFront">(+90)<span> </span><?php echo $kullanicicek['telNo'][0],$kullanicicek['telNo'][1],$kullanicicek['telNo'][2] ?><span> </span><?php echo $kullanicicek['telNo'][3],$kullanicicek['telNo'][4],$kullanicicek['telNo'][5] ?><span> </span><?php echo $kullanicicek['telNo'][6],$kullanicicek['telNo'][7] ?><span> </span><?php echo $kullanicicek['telNo'][8],$kullanicicek['telNo'][9] ?>
+										<p style="margin-bottom:0px; display:none; padding-top:5px;" id="telNoFront">
+											(+90)<span> </span>
+											<?php echo $kullanicicek['telNo'][0],$kullanicicek['telNo'][1],$kullanicicek['telNo'][2] ?><span>
+											</span>
+											<?php echo $kullanicicek['telNo'][3],$kullanicicek['telNo'][4],$kullanicicek['telNo'][5] ?><span>
+											</span>
+											<?php echo $kullanicicek['telNo'][6],$kullanicicek['telNo'][7] ?><span>
+											</span>
+											<?php echo $kullanicicek['telNo'][8],$kullanicicek['telNo'][9] ?>
 										</p>
 										<p style="margin-bottom:0px; display:none;" id="emailFront">
 											<?php echo $kullanicicek['email'] ?>
@@ -170,12 +170,12 @@ $kullanicisor->execute(array(
 										<?php echo $kullanicicek['tckn'] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="dogumTarihi">
-									<?php echo $kullanicicek['dogumTarihi'][8],$kullanicicek['dogumTarihi'][9] ?><span>.</span><?php echo $kullanicicek['dogumTarihi'][5],$kullanicicek['dogumTarihi'][6] ?><span>.</span><?php echo $kullanicicek['dogumTarihi'][0],$kullanicicek['dogumTarihi'][1],$kullanicicek['dogumTarihi'][2],$kullanicicek['dogumTarihi'][3] ?>
+										<?php echo $kullanicicek['dogumTarihi'][8],$kullanicicek['dogumTarihi'][9]?><span>.</span><?php echo $kullanicicek['dogumTarihi'][5],$kullanicicek['dogumTarihi'][6]?><span>.</span><?php echo $kullanicicek['dogumTarihi'][0],$kullanicicek['dogumTarihi'][1],$kullanicicek['dogumTarihi'][2],$kullanicicek['dogumTarihi'][3] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="burc">
 										<?php echo $kullanicicek['burc'] ?>
 									</td>
-									<td style="overflow:hidden; white-space:nowrap; " id="mail" style="text-center;">
+									<td style="overflow:hidden; white-space:nowrap;text-align:center;" id="mail">
 										<button type="button" class="btn btn-primary py-0" style="font-size:12px;">Mail
 											Gönder</button>
 									</td>
@@ -185,75 +185,93 @@ $kullanicisor->execute(array(
 					</div>
 
 
+					<div class="row grafikler" style="display:flex; margin-bottom:30px;" id="grafikler">
+						<div class="col-lg-6">
+							<div class="card shadow">
+								<div class="card-body">
+									<h6 class="pt-3"><h3>KİŞİLİK TESTİ SONUÇLARI</h3></h6>
+									<hr>
+									<div class="row" style="padding-left:2%;">
+										<div class="col-lg-6">
+										<div class="ozellikler">
+											<div class="row border border-secondary">
+												<div class="col-md-6" id="deneme" style="background-color:yellow; justify-content:left;">
+													Neşeli & Hayalci</div>
+												<div class="col-md-6 d-flex " id="neseli"></div>
+											</div>
+										</div>
+										<div class="ozellikler">
+											<div class="row border border-secondary">
+												<div class="col-md-6" style="background-color:red; color:white; ">
+													Otoriter</div>
+												<div class="col-md-6 d-flex " id="otoriter"></div>
+											</div>
+										</div>
+										<div class="ozellikler">
+											<div class="row border border-secondary">
+												<div class="col-md-6" style="background-color:green; color:white;">
+													Sakin</div>
+												<div class="col-md-6 d-flex " id="sakin"></div>
+											</div>
+										</div>
+										<div class="ozellikler">
+											<div class="row border border-secondary">
+												<div class="col-md-6" style="background-color:blue; color:white;">
+													Titiz - İdealist</div>
+												<div class="col-md-6 d-flex " id="titiz"></div>
+											</div>
+										</div>
+										</div>
+										<div class="col-lg-6">
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
 
-					<div class="row grafikler"
-						style="display:none; margin-bottom:30px; margin-left:%15; margin-right:%15;" id="grafikler">
-						<div class="col-md-4 text-center border border-primary pb-5">
-							<h6 class="pt-3"> KİŞİLİK TESTİ SONUÇLARI</h6>
-							<hr>
-							<div class="col-md-12" style="padding-left:10%; padding-right:10%;">
-								<div class="ozellikler">
-									<div class="row border border-secondary">
-										<div class="col-md-6 text-center" id="deneme" style="background-color:yellow;">
-											Neşeli & Hayalci</div>
-										<div class="col-md-6 d-flex align-items-center justify-content-center"
-											id="neseli"></div>
-									</div>
-								</div>
-								<div class="ozellikler">
-									<div class="row border border-secondary">
-										<div class="col-md-6 text-center" style="background-color:red; color:white; ">
-											Otoriter</div>
-										<div class="col-md-6 d-flex align-items-center justify-content-center"
-											id="otoriter"></div>
-									</div>
-								</div>
-								<div class="ozellikler">
-									<div class="row border border-secondary">
-										<div class="col-md-6 text-center" style="background-color:green; color:white;">
-											Sakin</div>
-										<div class="col-md-6 d-flex align-items-center justify-content-center"
-											id="sakin"></div>
-									</div>
-								</div>
-								<div class="ozellikler">
-									<div class="row border border-secondary">
-										<div class="col-md-6 text-center" style="background-color:blue; color:white;">
-											Titiz - İdealist</div>
-										<div class="col-md-6 d-flex align-items-center justify-content-center"
-											id="titiz"></div>
+						<div class="col-lg-6">
+							<div class="card shadow">
+								<div class="card-body">
+									<h6 class="pt-3"><h3>DAVRANIŞ TESTİ SONUÇLARI</h3></h6>
+									<hr>
+									<div class="row">
+										<div class="col-md-4">
+											<h6><b>Girişken Davranış Puanı</b><span id="gdp"> </span></h6>
+										</div>
+										<div class="col-md-4">
+											<h6><b>Baskıcı Davranış Puanı</b><span id="bdp"> </span></h6>
+										</div>
+										<div class="col-md-4">
+											<h6><b>Pasif Davranış Puanı</b><span id="pdp"> </span></h6>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-12 d-flex" style="justify-content:center;">
-								<div id="chartContainer1" style="height: 200px; width: 100%;"></div>
-							</div>
-						</div>
-						<div class="col-md-4 text-center border border-success pb-5">
-							<h6 class="pt-3"> DAVRANIŞ TESTİ SONUÇLARI</h6>
-							<hr>
-							<div class="row">
-								<div class="col-md-4">
-									<p style="text-decoration:underline;margin-bottom:0px;">Girişken D. Puanı:</p>
-									<p id="gdp"> </p>
-								</div>
-								<div class="col-md-4">
-									<p style="text-decoration:underline;margin-bottom:0px;">Baskıcı D. Puanı:</p>
-									<p id="bdp"> </p>
-								</div>
-								<div class="col-md-4">
-									<p style="text-decoration:underline;margin-bottom:0px;">Pasif D. Puanı:</p>
-									<p id="pdp"> </p>
-								</div>
-							</div>
-							<div id="chartContainer" style="height: 200px; width: 100%;"></div>
-						</div>
-						<div class="col-md-4 text-center border border-danger pb-5">
-							<h6 class="pt-3"> ENVANTER TESTİ SONUÇLARI</h6>
-							<hr>
-							<div id="foo" style="height: 200px; width: 100%;"></div>
 						</div>
 					</div>
+					<div class="row" style="margin-bottom:5rem;">
+						<div class="col-lg-12">
+							<div class="card shadow">
+								<div class="card-body">
+									<h6 class="pt-3"><h3>ENVANTER TESTİ SONUÇLARI</h3></h6>
+									<hr>
+									<div class="row">
+										<div class="col-lg-3">
+											<h6><b>Dışadönüklük</b><span id="disadonuk"> </span></h6>
+											<h6><b>Duygusal Denge</b><span id="duygusaldenge"> </span></h6>
+											<h6><b>Özdenetim</b><span id="ozdenetim"> </span></h6>
+											<h6><b>Uyumluluk</b><span id="uyumluluk"> </span></h6>
+											<h6><b>Yeniliğe Açıklık</b><span id="yeniligeaciklik"> </span></h6>
+										</div>
+										<div class="col-lg-9">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 
 				</div>
 			</div>
@@ -262,8 +280,7 @@ $kullanicisor->execute(array(
 
 	</div>
 	<script src="../js/admin.js"></script>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 	<script src="https://kit.fontawesome.com/35e8266fdf.js" crossorigin="anonymous"></script>
 </body>

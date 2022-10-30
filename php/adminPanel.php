@@ -67,7 +67,7 @@
 
 						<div class="form-group text-center">
 						<button type="button" id="login" name="login" onclick="girisYap()"
-								class="btn btn-primary btn-block">Giriş Yap</button>
+								class="btn btn-primary btn-block py-1">Giriş Yap</button>
 						</div>
 					</div>
 				</div>

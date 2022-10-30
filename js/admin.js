@@ -1,12 +1,15 @@
+window.onload = function() {
+    sonucAc();
+  };
+
 function sonucAc() {
     const tckn = document.getElementById("tckn").innerHTML;
-    var ctx = document.getElementById("myChart");
     $KTsoruSayisi = 40;
     $DTsoruSayisi = 35;
     $ETsoruSayisi = 39;
     $neseliVeHayalci = 0;
     $otoriter = 0;
-    $sakin = 0;
+    $sakin= 0;
     $titiz = 0;
     $KTB = 0;
     $KTA = 0;
@@ -30,6 +33,7 @@ function sonucAc() {
     $ozdenetim = 0;
     $uyumluluk = 0;
     $yeniligeAciklik = 0;
+
     for (let i = 1; i < $KTsoruSayisi + 1; i++) {
         $.ajax({
             type: 'POST',
@@ -49,35 +53,18 @@ function sonucAc() {
                 $otoriter = ($KTB * 100 / 40);
                 $sakin = ($KTC * 100 / 40);
                 $titiz = ($KTD * 100 / 40);
-
-                $("#otoriter").html('<div class="col-md-6 d-flex align-items-center justify-content-center" id="otoriter">%' + $otoriter + '</div>');
-                $("#neseli").html('<div class="col-md-6 d-flex align-items-center justify-content-center" id="neseliVeHayalci">%' + $neseliVeHayalci + '</div>');
-                $("#sakin").html('<div class="col-md-6 d-flex align-items-center justify-content-center" id="sakin">%' + $sakin + '</div>');
-                $("#titiz").html('<div class="col-md-6 d-flex align-items-center justify-content-center" id="titiz">%' + $titiz + '</div>');
-                var chart = new CanvasJS.Chart("chartContainer1", {
-                    animationEnabled: true,
-                    data: [{
-                        type: "doughnut",
-                        startAngle: 60,
-                        //innerRadius: 60,
-                        indexLabelFontSize: 17,
-                        indexLabel: "{label} - #percent%",
-                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-                        dataPoints: [
-                            { y: $neseliVeHayalci, label: "Neşeli - Hayalci" },
-                            { y: $otoriter, label: "Otoriter" },
-                            { y: $sakin, label: "Sakin" },
-                            { y: $titiz, label: "Titiz-İdealist" },
-                        ]
-                    }]
-                });
-                chart.render();
+                
+                $("#otoriter").html('<div class="col-md-6 d-flexr" id="otoriter">' + $otoriter + '</div>');
+                $("#neseli").html('<div class="col-md-6 d-flex" id="neseliVeHayalci">' + $neseliVeHayalci + '</div>');
+                $("#sakin").html('<div class="col-md-6 d-flex" id="sakin">' + $sakin + '</div>');
+                $("#titiz").html('<div class="col-md-6 d-flex" id="titiz">' + $titiz + '</div>');
             }
 
         });
 
     }
-    // Doughnut Chart 
+
+
 
     for (let i = 1; i < $DTsoruSayisi + 1; i++) {
         $.ajax({
@@ -105,104 +92,39 @@ function sonucAc() {
                 } else if ("4" == msg.toString()) {
                     $DT4++;
                 }
-                var chart = new CanvasJS.Chart("chartContainer", {
-                    animationEnabled: true,
-                    axisY2: {
-                        title: "Billions of Barrels",
-                        titleFontColor: "#4F81BC",
-                        lineColor: "#4F81BC",
-                        labelFontColor: "#4F81BC",
-                        tickColor: "#4F81BC"
-                    },
-                    axisY: {
-                        title: "%",
-                        titleFontColor: "#C0504E",
-                        lineColor: "#C0504E",
-                        labelFontColor: "#C0504E",
-                        tickColor: "#C0504E"
-                    },
-                    axisY3: {
-                        title: "Millions of Barrels/day",
-                        titleFontColor: "green",
-                        lineColor: "green",
-                        labelFontColor: "green",
-                        tickColor: "green"
-                    },
-                    toolTip: {
-                        shared: true
-                    },
-                    legend: {
-                        cursor: "pointer",
-                        itemclick: toggleDataSeries
-                    },
-                    data: [{
-                        type: "column",
-                        name: "En Düşük",
-                        legendText: "En Düşük",
-                        showInLegend: true,
-                        dataPoints: [
-                            { label: "Girişken D. Puanı", y: 75 },
-                            { label: "Baskıcı D. Puanı", y: 25 },
-                            { label: "Pasif D. Puanı", y: 25 }
-                        ]
-                    }, {
 
-                        type: "column",
-                        name: "En yüksek",
-                        legendText: "En Yüksek",
-                        showInLegend: true,
-                        dataPoints: [
-                            { label: "Girişken D. Puanı", y: 85 },
-                            { label: "Baskıcı D. Puanı", y: 35 },
-                            { label: "Pasif D. Puanı", y: 30 }
-                        ]
-                    },
-                    {
-                        type: "column",
-                        name: "Kişinin Puanı",
-                        legendText: "Kişinin Puanı",
-                        showInLegend: true,
-                        dataPoints: [
-                            { label: "Girişken D. Puanı", y: ($gdp * 100 / 72) },
-                            { label: "Baskıcı D. Puanı", y: ($bdp * 100 / 36) },
-                            { label: "Pasif D. Puanı", y: ($pdp * 100 / 32) }
-                        ]
-                    }]
-                });
-                chart.render();
-
-                function toggleDataSeries(e) {
-                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                        e.dataSeries.visible = false;
-                    }
-                    else {
-                        e.dataSeries.visible = true;
-                    }
-                    chart.render();
-                }
 
                 if (($gdp * 100 / 72) < 75) {
-                    document.getElementById("gdp").innerHTML = "Düşük";
+                    document.getElementById("gdp").innerHTML = " - Düşük";
+                    document.getElementById("gdp").style.color = "red";
                 } else if (($gdp * 100 / 72) >= 75 && ($gdp * 100 / 72) <= 85) {
-                    document.getElementById("gdp").innerHTML = "İdeal";
+                    document.getElementById("gdp").innerHTML = " - İdeal";
+                    document.getElementById("gdp").style.color = "black";
                 } else {
-                    document.getElementById("gdp").innerHTML = "Yüksek";
+                    document.getElementById("gdp").innerHTML = " - Yüksek";
+                    document.getElementById("gdp").style.color = "green";
                 }
 
                 if (($bdp * 100 / 36) < 25) {
-                    document.getElementById("bdp").innerHTML = "Düşük";
+                    document.getElementById("bdp").innerHTML = " - Düşük";
+                    document.getElementById("bdp").style.color = "red";
                 } else if (($bdp * 100 / 36) >= 25 && ($bdp * 100 / 36) <= 35) {
-                    document.getElementById("bdp").innerHTML = "İdeal";
+                    document.getElementById("bdp").innerHTML = " - İdeal";
+                    document.getElementById("bdp").style.color = "black";
                 } else {
-                    document.getElementById("bdp").innerHTML = "Yüksek";
+                    document.getElementById("bdp").innerHTML = " - Yüksek";
+                    document.getElementById("bdp").style.color = "green";
                 }
 
                 if (($pdp * 100 / 32) < 25) {
-                    document.getElementById("pdp").innerHTML = "Düşük";
+                    document.getElementById("pdp").innerHTML = " - Düşük";
+                    document.getElementById("pdp").style.color = "red";
                 } else if (($pdp * 100 / 32) >= 25 && ($pdp * 100 / 32) <= 30) {
-                    document.getElementById("pdp").innerHTML = "İdeal";
+                    document.getElementById("pdp").innerHTML = " - İdeal";
+                    document.getElementById("pdp").style.color = "black";
                 } else {
-                    document.getElementById("pdp").innerHTML = "Yüksek";
+                    document.getElementById("pdp").innerHTML = " - Yüksek";
+                    document.getElementById("pdp").style.color = "green";
                 }
 
             }
@@ -245,22 +167,106 @@ function sonucAc() {
                     $ET5++;
                 }
 
+                if ($disadonukluk <= 7) { //Dışa Dönüklük
+                    document.getElementById("disadonuk").innerHTML = " - Düşük";
+                    document.getElementById("disadonuk").style.color = "red";
+                } else if ($disadonukluk >= 8 && $disadonukluk <= 14) {
+                    document.getElementById("disadonuk").innerHTML = " - Düşük";
+                    document.getElementById("disadonuk").style.color = "orange";
+                } else if ($disadonukluk >= 15 && $disadonukluk <= 21) {
+                    document.getElementById("disadonuk").innerHTML = " - Orta";
+                    document.getElementById("disadonuk").style.color = "black";
+                } else if ($disadonukluk >= 22 && $disadonukluk <= 28) {
+                    document.getElementById("disadonuk").innerHTML = " - Yüksek";
+                    document.getElementById("disadonuk").style.color = "green";
+                } else if ($disadonukluk >= 29 && $disadonukluk <= 35) {
+                    document.getElementById("disadonuk").innerHTML = " - Çok Yüksek";
+                    document.getElementById("disadonuk").style.color = "darkgreen";
+                }
 
-                
-                
+                if ($duygusalDenge <= 8) { //Duygusal Denge
+                    document.getElementById("duygusaldenge").innerHTML = " - Düşük";
+                    document.getElementById("duygusaldenge").style.color = "red";
+                } else if ($duygusalDenge >= 9 && $duygusalDenge <= 16) {
+                    document.getElementById("duygusaldenge").innerHTML = " - Düşük";
+                    document.getElementById("duygusaldenge").style.color = "orange";
+                } else if ($duygusalDenge >= 17 && $duygusalDenge <= 24) {
+                    document.getElementById("duygusaldenge").innerHTML = " - Orta";
+                    document.getElementById("duygusaldenge").style.color = "black";
+                } else if ($duygusalDenge >= 25 && $duygusalDenge <= 32) {
+                    document.getElementById("duygusaldenge").innerHTML = " - Yüksek";
+                    document.getElementById("duygusaldenge").style.color = "green";
+                } else if ($duygusalDenge >= 33 && $duygusalDenge <= 40) {
+                    document.getElementById("duygusaldenge").innerHTML = " - Çok Yüksek";
+                    document.getElementById("duygusaldenge").style.color = "darkgreen";
+                }
+
+                if ($ozdenetim <= 8) { //Öz Denetim
+                    document.getElementById("ozdenetim").innerHTML = " - Düşük";
+                    document.getElementById("ozdenetim").style.color = "red";
+                } else if ($ozdenetim >= 9 && $ozdenetim <= 16) {
+                    document.getElementById("ozdenetim").innerHTML = " - Düşük";
+                    document.getElementById("ozdenetim").style.color = "orange";
+                } else if ($ozdenetim >= 17 && $ozdenetim <= 24) {
+                    document.getElementById("ozdenetim").innerHTML = " - Orta";
+                    document.getElementById("ozdenetim").style.color = "black";
+                } else if ($ozdenetim >= 25 && $ozdenetim <= 32) {
+                    document.getElementById("ozdenetim").innerHTML = " - Yüksek";
+                    document.getElementById("ozdenetim").style.color = "green";
+                } else if ($ozdenetim >= 33 && $ozdenetim <= 40) {
+                    document.getElementById("ozdenetim").innerHTML = " - Çok Yüksek";
+                    document.getElementById("ozdenetim").style.color = "darkgreen";
+                }
+
+                if ($uyumluluk <= 8) { //Uyumluluk
+                    document.getElementById("uyumluluk").innerHTML = " - Düşük";
+                    document.getElementById("uyumluluk").style.color = "red";
+                } else if ($uyumluluk >= 9 && $uyumluluk <= 16) {
+                    document.getElementById("uyumluluk").innerHTML = " - Düşük";
+                    document.getElementById("uyumluluk").style.color = "orange";
+                } else if ($uyumluluk >= 17 && $uyumluluk <= 24) {
+                    document.getElementById("uyumluluk").innerHTML = " - Orta";
+                    document.getElementById("uyumluluk").style.color = "black";
+                } else if ($uyumluluk >= 25 && $uyumluluk <= 32) {
+                    document.getElementById("uyumluluk").innerHTML = " - Yüksek";
+                    document.getElementById("uyumluluk").style.color = "green";
+                } else if ($uyumluluk >= 33 && $uyumluluk <= 40) {
+                    document.getElementById("uyumluluk").innerHTML = " - Çok Yüksek";
+                    document.getElementById("uyumluluk").style.color = "darkgreen";
+                }
+
+                if ($yeniligeAciklik <= 8) { //Yeniliğe Açıklık
+                    document.getElementById("yeniligeaciklik").innerHTML = " - Düşük";
+                    document.getElementById("yeniligeaciklik").style.color = "red";
+                } else if ($yeniligeAciklik >= 9 && $yeniligeAciklik <= 16) {
+                    document.getElementById("yeniligeaciklik").innerHTML = " - Düşük";
+                    document.getElementById("yeniligeaciklik").style.color = "orange";
+                } else if ($yeniligeAciklik >= 17 && $yeniligeAciklik <= 24) {
+                    document.getElementById("yeniligeaciklik").innerHTML = " - Orta";
+                    document.getElementById("yeniligeaciklik").style.color = "black";
+                } else if ($yeniligeAciklik >= 25 && $yeniligeAciklik <= 32) {
+                    document.getElementById("yeniligeaciklik").innerHTML = " - Yüksek";
+                    document.getElementById("yeniligeaciklik").style.color = "green";
+                } else if ($yeniligeAciklik >= 33 && $yeniligeAciklik <= 40) {
+                    document.getElementById("yeniligeaciklik").innerHTML = " - Çok Yüksek";
+                    document.getElementById("yeniligeaciklik").style.color = "darkgreen";
+                }
 
             }
         });
     }
 
     document.getElementById("grafikler").style.display = 'flex';
-    document.getElementById("sonucAc").style.display = 'none';
 }
 
 
 function telNoAc() {
     var x = document.getElementById("telNoFront");
-    var y = document.getElementById("emailFront");
+    var y
+
+
+
+        = document.getElementById("emailFront");
     if (x.style.display === "none") {
         x.style.display = "block";
         y.style.display = "block";
