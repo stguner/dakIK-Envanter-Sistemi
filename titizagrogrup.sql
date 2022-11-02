@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 -- Tablo için tablo yapısı `admin`
 --
 
-CREATE DATABASE titizagrogrup;
-USE titizagrogrup;
+-- CREATE DATABASE titizagrogrup;
+USE envantertestleri;
 
 
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`kullaniciAdi`, `sifre`, `kayit_id`) VALUES
-('stg', '123123', 1);
+('admin', 'pinkpanter', 1);
 
 -- --------------------------------------------------------
 

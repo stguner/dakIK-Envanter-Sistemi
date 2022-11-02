@@ -172,10 +172,8 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 				let arr = JSON.parse(data); // PHP'den array almak için kullanırız
 				if (!arr[0]) {
 					document.getElementById("mernis_hata").style.display = 'block';
-				} else if(!arr[1]) {
-					document.getElementById("mernis_hata").style.display = 'none';
-					kullanilmisTCKN();
 				} else {
+					document.getElementById("mernis_hata").style.display = "none";
 					ucuncuSayfaAc();
 				}
 			}
