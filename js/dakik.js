@@ -94,7 +94,7 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 	if (tckn.value < 1) {
 		document.getElementById("hatamodal").style.display = 'block';
 		document.getElementById("hatamodal").classList.add('show');
-		document.getElementById("demo").innerHTML = "Lütfen isminizi yazdığınızdan emin olun!";
+		document.getElementById("demo").innerHTML = "Lütfen TC Kimlik numaranızı yazdığınızdan emin olun!";
 	} else if (kullaniciSoyadi.value < 1) {
 		document.getElementById("hatamodal").style.display = 'block';
 		document.getElementById("hatamodal").classList.add('show');
@@ -102,15 +102,15 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 	} else if (kullaniciAdi.value < 1) {
 		document.getElementById("hatamodal").style.display = 'block';
 		document.getElementById("hatamodal").classList.add('show');tar
-		document.getElementById("demo").innerHTML = "Lütfen TC Kimlik numaranızı yazdığınızdan emin olun!";
+		document.getElementById("demo").innerHTML = "Lütfen isminizi yazdığınızdan emin olun!";
 	} else if (telNo.value < 1) {
 		document.getElementById("hatamodal").style.display = 'block';
 		document.getElementById("hatamodal").classList.add('show');
-		document.getElementById("demo").innerHTML = "Lütfen Email alanını boş bırakmadığınızdan emin olun!";
+		document.getElementById("demo").innerHTML = "Lütfen telefon numaranızı yazdığınızdan emin olun!";
 	} else if (email.value < 1) {
 		document.getElementById("hatamodal").style.display = 'block';
 		document.getElementById("hatamodal").classList.add('show');
-		document.getElementById("demo").innerHTML = "Lütfen telefon numaranızı yazdığınızdan emin olun!";
+		document.getElementById("demo").innerHTML = "Lütfen Email alanını boş bırakmadığınızdan emin olun!";
 	} else {
 		const tckn = document.getElementById("tckn").value;
 		const kullaniciAdi = document.getElementById("kullaniciAdi").value;
@@ -121,53 +121,53 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 		let cinsiyetler = document.getElementsByName("gender");
 		let cinsiyet = (cinsiyetler[0].checked) ? "Erkek" : "Kadın";
 		const dogumTarihi = document.getElementById("dogumTarihi").value;
-		const baslangic = document.getElementById("field").value;
+		const baslangic = getTimeStamp();
 
 		// Burç Hesaplama Başlangıç 
 		var dogumGunuSplitted = dogumTarihi.split("-")
 		var dogumAyi = dogumGunuSplitted[1];
 		var dogumGunu = dogumGunuSplitted[2];
 		var burc = dogumGunu;
-		if (dogumAyi == 1 && dogumGunu >= 20 || dogumAyi == 2 && dogumGunu <= 18) {
-			burc = ("Kova &#9810;");
+		if (dogumAyi == 01 && dogumGunu >= 20 || dogumAyi == 02 && dogumGunu <= 18) {
+			burc = ("Kova♒");
 		}
-		if (dogumAyi == 2 && dogumGunu >= 19 || dogumAyi == 3 && dogumGunu <= 20) {
-			burc = ("Balık &#9811;");
+		if (dogumAyi == 02 && dogumGunu >= 19 || dogumAyi == 03 && dogumGunu <= 20) {
+			burc = ("Balık♓");
 		}
-		if (dogumAyi == 3 && dogumGunu >= 21 || dogumAyi == 4 && dogumGunu <= 20) {
-			burc = ("Koç &#9800;");
+		if (dogumAyi == 03 && dogumGunu >= 21 || dogumAyi == 04 && dogumGunu <= 20) {
+			burc = ("Koç♈");
 		}
-		if (dogumAyi == 4 && dogumGunu >= 21 || dogumAyi == 5 && dogumGunu <= 20) {
-			burc = ("Boğa &#9801;");
+		if (dogumAyi == 04 && dogumGunu >= 21 || dogumAyi == 05 && dogumGunu <= 20) {
+			burc = ("Boğa♉");
 		}
-		if (dogumAyi == 5 && dogumGunu >= 21 || dogumAyi == 6 && dogumGunu <= 20) {
-			burc = ("İkizler &#9802;");
+		if (dogumAyi == 05 && dogumGunu >= 21 || dogumAyi == 06 && dogumGunu <= 20) {
+			burc = ("İkizler♊");
 		}
-		if (dogumAyi == 6 && dogumGunu >= 21 || dogumAyi == 7 && dogumGunu <= 22) {
-			burc = ("Yengeç &#9803;");
+		if (dogumAyi == 06 && dogumGunu >= 21 || dogumAyi == 07 && dogumGunu <= 22) {
+			burc = ("Yengeç♋");
 		}
-		if (dogumAyi == 7 && dogumGunu >= 23 || dogumAyi == 8 && dogumGunu <= 22) {
-			burc = ("Aslan &#9804;");
+		if (dogumAyi == 07 && dogumGunu >= 23 || dogumAyi == 08 && dogumGunu <= 22) {
+			burc = ("Aslan♌");
 		}
-		if (dogumAyi == 8 && dogumGunu >= 23 || dogumAyi == 9 && dogumGunu <= 22) {
-			burc = ("Başak &#9805;");
+		if (dogumAyi == 08 && dogumGunu >= 23 || dogumAyi == 09 && dogumGunu <= 22) {
+			burc = ("Başak♍");
 		}
-		if (dogumAyi == 9 && dogumGunu >= 23 || dogumAyi == 10 && dogumGunu <= 22) {
-			burc = ("Terazi &#9806;");
+		if (dogumAyi == 09 && dogumGunu >= 23 || dogumAyi == 10 && dogumGunu <= 22) {
+			burc = ("Terazi♎");
 		}
 		if (dogumAyi == 10 && dogumGunu >= 23 || dogumAyi == 11 && dogumGunu <= 22) {
-			burc = ("Akrep &#9807;");
+			burc = ("Akrep♏");
 		}
 		if (dogumAyi == 11 && dogumGunu >= 23 || dogumAyi == 12 && dogumGunu <= 21) {
-			burc = ("Yay &#9808;");
+			burc = ("Yay♐");
 		}
 		if (dogumAyi == 12 && dogumGunu >= 22 || dogumAyi == 1 && dogumGunu <= 19) {
-			burc = ("Oğlak &#9809;");
+			burc = ("Oğlak♑");
 		}
 		$.ajax({
 			url: "islemler.php?mode=baslangic",
 			type: "POST",
-			data: "tckn=" + tckn + '&kullaniciAdi=' + kullaniciAdi + '&baslangic=' + baslangic + '&kullaniciSoyadi=' + kullaniciSoyadi + '&telNo=' + telNo + '&email=' + email + '&cinsiyet=' + cinsiyet + '&dogumTarihi=' + dogumTarihi + '&burc=' + burc + '&baslangic=' + baslangic,
+			data: "tckn=" + tckn + '&kullaniciAdi=' + kullaniciAdi + '&baslangic=' + baslangic + '&kullaniciSoyadi=' + kullaniciSoyadi + '&telNo=' + telNo + '&email=' + email + '&cinsiyet=' + cinsiyet + '&dogumTarihi=' + dogumTarihi + '&burc=' + burc,
 			success: function (data) {
 				let arr = JSON.parse(data); // PHP'den array almak için kullanırız
 				if (!arr[0]) {
@@ -327,7 +327,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 				}
 			});
 		} else {
-			const bitis = document.getElementById("field").value;
+			const bitis = getTimeStamp();
 			const tckn = document.getElementById("tckn").value;
 			$.ajax({
 				type: 'POST',
@@ -476,7 +476,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 					}
 				});
 			} else {
-				const bitis = document.getElementById("field").value;
+				const bitis = getTimeStamp();
 				const tckn = document.getElementById("tckn").value;
 				$.ajax({
 					type: 'POST',
@@ -543,6 +543,12 @@ function soyadBuyuk() { // Kullanıcı Soyadını Büyük Yazdırır
 	x.value = x.value.toLocaleUpperCase("tr-TR");
 }
 
+	function getTimeStamp() {
+       var now = new Date();
+       return (((now.getDate() < 10) ? ("0" + now.getDate()) : (now.getDate())) + '.' + (now.getMonth() + 1) + '.' + now.getFullYear() + " " + ((now.getHours() < 10) ? ("0" + now.getHours()) : (now.getHours())) + ':'
+                     + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())) + ':' + ((now.getSeconds() < 10) ? ("0" + now
+                     .getSeconds()) : (now.getSeconds())));
+	}
 
 
 

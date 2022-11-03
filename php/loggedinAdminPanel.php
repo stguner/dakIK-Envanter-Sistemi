@@ -99,8 +99,11 @@ include 'config.php';
 										<td><?php echo $i; $i++; ?></td>
 										<td><?php echo $row['ad'] ?></td>
 										<td><?php echo $row['soyad'] ?></td>
-										<td><?php $parca2 = explode(" ",$row['baslangic']); $parca3 = explode(".",$parca2[0]); echo $parca3[1],'.',$parca3[0],'.',$parca3[2],' ',$parca2[1] ?></td>
-										<td><?php $parca = explode(" ",$row['bitis']); $parca1 = explode(".",$parca[0]); echo $parca1[1],'.',$parca1[0],'.',$parca1[2],' ',$parca[1] ?></td>
+										<td><?php $parca2 = explode(" ",$row['baslangic']); echo $parca2[0],' - ',$parca2[1]; ?></td>
+										<td><?php if($row['bitis'] != "") {
+											 $parca = explode(" ",$row['bitis']); echo $parca[0],' - ',$parca[1];}else{
+												echo "Bitirilmemiş";
+											} ?></td>
 										<td><?php echo $row['telNo'] ?></td>
 										<td><?php echo $row['cinsiyet'] ?></td>
 										<td><?php echo $row['tckn'] ?></td>

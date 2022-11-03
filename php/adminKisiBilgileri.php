@@ -1,44 +1,10 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 include 'config.php';
 $kullanicisor=$conn->prepare("SELECT * FROM cevaplar where tckn=:tckn");
 $kullanicisor->execute(array(
   'tckn' => $_GET['tckn']
   ));
   $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
-
-
-/*
-	if($_GET['durum']=="mailGonder"){
-	
-	require 'PHPMailer/src/Exception.php';
-	require 'PHPMailer/src/PHPMailer.php';
-	require 'PHPMailer/src/SMTP.php';
-	
-	$mail = new PHPMailer();
-	
-	$mail->isSMTP();
-	$mail->SMTPKeepAlive = true;
-	$mail->SMTPAuth = true;
-	$mail->SMTPSecure = 'tls'; //ssl
-	
-	$mail->Port = 587; //25,465
-	$mail->Host = "smtp-relay.gmail.com";
-	$mail->Username = "slymntrkr1905@gmail.com";
-	$mail->Password = "Stg29968055228"
-	
-	$mail->setFrom(address: "slymntrkr1905.com",name:"Titiz Agro Grup");
-	$mail->addAddress(address:"gunersuleymanturker@gmail.com",name:"Süleyman Türker Güner");
-	$mail->Subect = "Sonuçlarınız"
-	$mail->Body = "<h1>Sonuçlar buraya gelecek</h1><p>Bu bir deneme</p>";
-	if($mail->send()){
-		echo "Mail gönderildi";
-	}else{
-		echo "Malesef mail gönderilemedi.";
-	}
-}
-*/
 ?>
 
 
@@ -129,11 +95,11 @@ $kullanicisor->execute(array(
 										<?php echo $kullanicicek['soyad'] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="baslangic">
-										<?php echo $kullanicicek['baslangic'][3],$kullanicicek['baslangic'][4],$kullanicicek['baslangic'][2],$kullanicicek['baslangic'][0],$kullanicicek['baslangic'][1],$kullanicicek['baslangic'][5],$kullanicicek['baslangic'][6],$kullanicicek['baslangic'][7],' - ',$kullanicicek['baslangic'][9],$kullanicicek['baslangic'][10],$kullanicicek['baslangic'][11],$kullanicicek['baslangic'][12],$kullanicicek['baslangic'][13],$kullanicicek['baslangic'][14],$kullanicicek['baslangic'][15],$kullanicicek['baslangic'][16]; ?>
+										<?php $parca2 = explode(" ",$kullanicicek['baslangic']); echo $parca2[0],' - ',$parca2[1]; ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="bitis">
 										<?php if($kullanicicek['bitis'] != "") {
-											echo $kullanicicek['bitis'][3],$kullanicicek['bitis'][4],$kullanicicek['bitis'][2],$kullanicicek['bitis'][0],$kullanicicek['bitis'][1],$kullanicicek['bitis'][5],$kullanicicek['bitis'][6],$kullanicicek['bitis'][7],' - ',$kullanicicek['bitis'][9],$kullanicicek['bitis'][10],$kullanicicek['bitis'][11],$kullanicicek['bitis'][12],$kullanicicek['bitis'][13],$kullanicicek['bitis'][14],$kullanicicek['bitis'][15],$kullanicicek['bitis'][16]; }else{
+											 $parca = explode(" ",$kullanicicek['bitis']); echo $parca[0],' - ',$parca[1];}else{
 												echo "Bitirilmemiş";
 											} ?>
 									</td>
@@ -176,8 +142,9 @@ $kullanicisor->execute(array(
 										<?php echo $kullanicicek['burc'] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap;text-align:center;" id="mail">
-										<button type="button" class="btn btn-primary py-0" style="font-size:12px;">Mail
-											Gönder</button>
+									<!-- <a href="islemler.php?mode=mailGonder"> -->
+										<button type="button" class="btn btn-primary py-0" style="font-size:12px;"  disabled>Mail Gönder</button> <!-- onclick="sendemail()": Bu özellik daha sonra açılacak--> 
+									<!-- </a> -->
 									</td>
 								</tr>
 							</tbody>
@@ -187,42 +154,43 @@ $kullanicisor->execute(array(
 
 					<div class="row grafikler" style="display:flex; margin-bottom:30px;" id="grafikler">
 						<div class="col-lg-6">
-							<div class="card shadow">
+							<div class="card shadow d-block h-100">
 								<div class="card-body">
 									<h6 class="pt-3"><h3>KİŞİLİK TESTİ SONUÇLARI</h3></h6>
 									<hr>
-									<div class="row" style="padding-left:2%;">
+									<div class="row align-items-center" style="padding-left:2%;">
 										<div class="col-lg-6">
 										<div class="ozellikler">
 											<div class="row border border-secondary">
 												<div class="col-md-6" id="deneme" style="background-color:yellow; justify-content:left;">
 													Neşeli & Hayalci</div>
-												<div class="col-md-6 d-flex " id="neseli"></div>
+												<div class="col-md-6 d-flex " id="neseli">%</div>
 											</div>
 										</div>
 										<div class="ozellikler">
 											<div class="row border border-secondary">
 												<div class="col-md-6" style="background-color:red; color:white; ">
 													Otoriter</div>
-												<div class="col-md-6 d-flex " id="otoriter"></div>
+												<div class="col-md-6 d-flex " id="otoriter">%</div>
 											</div>
 										</div>
 										<div class="ozellikler">
 											<div class="row border border-secondary">
 												<div class="col-md-6" style="background-color:green; color:white;">
 													Sakin</div>
-												<div class="col-md-6 d-flex " id="sakin"></div>
+												<div class="col-md-6 d-flex " id="sakin">%</div>
 											</div>
 										</div>
 										<div class="ozellikler">
 											<div class="row border border-secondary">
 												<div class="col-md-6" style="background-color:blue; color:white;">
 													Titiz - İdealist</div>
-												<div class="col-md-6 d-flex " id="titiz"></div>
+												<div class="col-md-6 d-flex " id="titiz">%</div>
 											</div>
 										</div>
 										</div>
-										<div class="col-lg-6">
+										<div class="col-lg-6 d-flex justify-content-center">
+											<canvas class="text-center" id="myChart" style="width:100%;max-width:300px;"></canvas>
 										</div>
 									</div>
 									
@@ -231,19 +199,18 @@ $kullanicisor->execute(array(
 						</div>
 
 						<div class="col-lg-6">
-							<div class="card shadow">
+							<div class="card shadow d-block h-100">
 								<div class="card-body">
 									<h6 class="pt-3"><h3>DAVRANIŞ TESTİ SONUÇLARI</h3></h6>
 									<hr>
-									<div class="row">
+									<div class="row align-items-center">
 										<div class="col-md-4">
 											<h6><b>Girişken Davranış Puanı</b><span id="gdp"> </span></h6>
-										</div>
-										<div class="col-md-4">
 											<h6><b>Baskıcı Davranış Puanı</b><span id="bdp"> </span></h6>
-										</div>
-										<div class="col-md-4">
 											<h6><b>Pasif Davranış Puanı</b><span id="pdp"> </span></h6>
+										</div>
+										<div class="col-md-8 d-flex justify-content-center">
+										<canvas class="text-center" id="canvas" style="width:100%;max-width:300px;"></canvas>
 										</div>
 									</div>
 								</div>
@@ -256,7 +223,7 @@ $kullanicisor->execute(array(
 								<div class="card-body">
 									<h6 class="pt-3"><h3>ENVANTER TESTİ SONUÇLARI</h3></h6>
 									<hr>
-									<div class="row">
+									<div class="row align-items-center">
 										<div class="col-lg-3">
 											<h6><b>Dışadönüklük</b><span id="disadonuk"> </span></h6>
 											<h6><b>Duygusal Denge</b><span id="duygusaldenge"> </span></h6>
@@ -264,7 +231,12 @@ $kullanicisor->execute(array(
 											<h6><b>Uyumluluk</b><span id="uyumluluk"> </span></h6>
 											<h6><b>Yeniliğe Açıklık</b><span id="yeniligeaciklik"> </span></h6>
 										</div>
-										<div class="col-lg-9">
+										<div class="col-lg-9 d-inline-block">
+										<canvas id="chart" style="width:100%;max-width:300px;display: inline;"></canvas>
+										<canvas id="chart2" style="width:100%;max-width:300px;display: inline;"></canvas>
+										<canvas id="chart3" style="width:100%;max-width:300px;display: inline;"></canvas>
+										<canvas id="chart4" style="width:100%;max-width:300px;display: inline;"></canvas>
+										<canvas id="chart5" style="width:100%;max-width:300px;display: inline;"></canvas>
 										</div>
 									</div>
 								</div>
@@ -279,8 +251,28 @@ $kullanicisor->execute(array(
 		</div>
 
 	</div>
+	<script>
+		function sendemail()
+{
+    $.ajax({
+		url: "islemler.php?mode=mailGonder",
+		type: "POST",
+		data: "neseli=" + neseli,"&otoriter=" + otoriter,"&sakin=" + sakin,"&titiz=" + titiz,
+		success: function (data) {
+			if (data == true) {
+				alert("Mail Başarıyla Gönderildi");
+			} else {
+				alert("Mail Gönderilemedi!")
+			}
+		}
+	});
+
+}
+	</script>
 	<script src="../js/admin.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	<script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+  	<script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 	<script src="https://kit.fontawesome.com/35e8266fdf.js" crossorigin="anonymous"></script>
 </body>

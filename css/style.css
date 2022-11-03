@@ -15,6 +15,8 @@ body {
   width: 100% !important;
   font-family: 'Poppins', sans-serif;
   font-size: 0.8rem !important;
+  min-height: 100% !important;
+  
 }
 
 
@@ -138,6 +140,48 @@ input[type=number]::-webkit-outer-spin-button {
 #devambuton > button {
   font-size: small;
 }
+
+
+.footer{
+  transition: all 1s ease-in-out;
+}
+
+.footer .footerDakik{
+  transition: all 1s ease-in-out;
+}
+
+.footer:hover .footerDakik{
+  left: 0px;
+  transform: translate(-100%, 0);
+}
+
+.footer #stg{
+  transition: all 3s ease-in-out;
+}
+
+.footer:hover #stg{
+  transform: translate(-100%, 0);
+  opacity: 1 !important;
+}
+
+.footer #ed{
+  transition: all 4s ease-in-out;
+}
+
+.footer:hover #ed{
+  transform: translate(-100%, 0);
+  opacity: 1 !important;
+}
+
+.footer #mmy{
+  transition: all 2s ease-in-out;
+}
+
+.footer:hover #mmy{
+  transform: translate(-100%, 0);
+  opacity: 1 !important;
+}
+
 
 
   

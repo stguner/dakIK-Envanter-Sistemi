@@ -23,7 +23,7 @@ include 'config.php';
 <body style="background-color: #F5F5F5;">
 	<div class="page-content">
 		<!-- Main content -->
-		<div class="header" style="background-color: #ffffff;">
+		<div class="header" style="background-color: #ffffff;min-height: 5vh;">
 			<header class="border-bottom">
 				<div class="nav col-4 col-md-auto pt-3 pb-3 w-100"
 					style="padding-left: 16px;display:flex; justify-content:space-between;">
@@ -37,7 +37,7 @@ include 'config.php';
 				</div>
 			</header>
 		</div>
-		<div class="content-wrapper md-3 py-5">
+		<div class="content-wrapper md-3 py-5" style="min-height: 90vh">
 			<!-- Content area -->
 			<div class="row g-0 mb-4">
 				<div class="col-md-3"></div>
@@ -617,7 +617,7 @@ include 'config.php';
 										Adresi</label>
 										<div class="col-lg-10">
 											<div class="position-relative">
-												<input type="text" name="email" id="email" class="form-control" maxlength="60"
+												<input type="text" name="email" oninput="this.value=this.value.replace(/[^a-z@0-9.\s]/g,'');" id="email" class="form-control" maxlength="60"
 													required>
 											</div>
 										</div>
@@ -751,19 +751,19 @@ include 'config.php';
 								<div id="radiobuttonlar" class="pb-3">
 									<label class="form-control2">
 										<input id="soruradio1" onchange="cevapyaz(this)" type="radio"
-											name="radio-styled-color" value="1-A-1">
+											name="radio-styled-color" value="1-A-1" tabindex="1">
 										<span id="c1" style="">Hareketli</span>
 									</label>
 									<br>
 									<label class="form-control2">
 										<input id="soruradio2" onchange="cevapyaz(this)" type="radio"
-											name="radio-styled-color" value="1-B-1">
+											name="radio-styled-color" value="1-B-1" tabindex="3">
 										<span id="c2" style="">Maceraperest</span>
 									</label>
 									<br>
 									<label class="form-control2">
 										<input id="soruradio3" onchange="cevapyaz(this)" type="radio"
-											name="radio-styled-color" value="1-C-1">
+											name="radio-styled-color" value="1-C-1" tabindex="4">
 										<span id="c3" style="">Uyum Sağlayan</span>
 									</label>
 									<br>
@@ -786,7 +786,7 @@ include 'config.php';
 									</div>
 									<div id="devambuton" class="col-md-6 w-50" style="text-align:right;">
 										<button disabled type="button" class="btn btn-primary py-0" 
-										onclick="sorugetir(2)">Devam Et</button>
+										onclick="sorugetir(2)" tabindex="2">Devam Et</button>
 									</div>
 								</div>
 								<br>
@@ -820,6 +820,20 @@ include 'config.php';
 			<div class="col-md-3"></div>
 		</div>
 		
+	</div>
+	<div class="footer bg-white shadow stick-bottom">
+		<footer class="d-flex flex-wrap justify-content-center align-items-center text-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center text-center justify-content-center">
+      <span class="text-muted footerDakik">© 2022 dakİK</span>
+    </div>
+	<div class="row">
+		<div class="col-md-12 text-muted">
+			<div id="mmy" style="opacity:0;">Mehmet Mesut Yılmaz</div>
+			<div id="stg" style="opacity:0;">Süleyman Türker Güner</div>
+			<div id="ed" style="opacity:0;">Enes Demirtaş</div>
+		</div>
+	</div>
+  </footer>
 	</div>
 	<!-- Content area -->
 	<script type="text/javascript">
