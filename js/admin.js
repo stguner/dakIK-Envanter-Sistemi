@@ -50,10 +50,10 @@ function sonucAc() {
                 } else if ("A" == msg.toString()) {
                     KTA++;
                 }
-                neseliVeHayalci = (KTA * 100 / 40);
-                otoriter = (KTB * 100 / 40);
-                sakin = (KTC * 100 / 40);
-                titiz = (KTD * 100 / 40);
+                neseliVeHayalci = ((KTA/40)*100);
+                otoriter = ((KTB/40)*100);
+                sakin = ((KTC/40)*100);
+                titiz = ((KTD/40)*100);
             }
 
         });
@@ -68,8 +68,8 @@ function sonucAc() {
             url: 'islemler.php?mode=DTsonuclariGetir',
             data: "soruid=" + i + '&tckn=' + tckn,
             success: function (msg) {
-                if (i == 1 || i == 3 || i == 4 || i == 6 || i == 7 || i == 10 || i == 16 || i == 12 || i == 14 || i == 18 || i == 19 || i == 22 || i == 25 || i == 24 || i == 27 || i == 28 || i == 30 || i == 35) {
-                    gdp += parseInt(msg[0]);
+                if (i == 1 || i == 3 || i == 4 || i == 6 || i == 7 || i == 10 || i == 12 || i == 14 || i == 16 || i == 18 || i == 19 || i == 22 || i == 24 || i == 25 || i == 27 || i == 28 || i == 30 || i == 35) {
+                  gdp += parseInt(msg[0]);
                 }
                 if (i == 8 || i == 13 || i == 20 || i == 23 || i == 26 || i == 31 || i == 32 || i == 33 || i == 34) {
                     bdp += parseInt(msg[0]);
@@ -90,36 +90,36 @@ function sonucAc() {
                 }
 
 
-                if ((gdp * 100 / 72) < 75) {
-                    document.getElementById("gdp").innerHTML = " - Düşük";
+                if (((gdp*100)/72) < 75) {
+                    document.getElementById("gdp").innerHTML = "Düşük";
                     document.getElementById("gdp").style.color = "red";
-                } else if ((gdp * 100 / 72) >= 75 && (gdp * 100 / 72) <= 85) {
-                    document.getElementById("gdp").innerHTML = " - İdeal";
+                } else if (((gdp*100)/72) >= 75 && ((gdp*100)/72) <= 85) {
+                    document.getElementById("gdp").innerHTML = "İdeal";
                     document.getElementById("gdp").style.color = "black";
                 } else {
-                    document.getElementById("gdp").innerHTML = " - Yüksek";
+                    document.getElementById("gdp").innerHTML = "Yüksek";
                     document.getElementById("gdp").style.color = "green";
                 }
 
                 if ((bdp * 100 / 36) < 25) {
-                    document.getElementById("bdp").innerHTML = " - Düşük";
+                    document.getElementById("bdp").innerHTML = "Düşük";
                     document.getElementById("bdp").style.color = "red";
                 } else if ((bdp * 100 / 36) >= 25 && (bdp * 100 / 36) <= 35) {
-                    document.getElementById("bdp").innerHTML = " - İdeal";
+                    document.getElementById("bdp").innerHTML = "İdeal";
                     document.getElementById("bdp").style.color = "black";
                 } else {
-                    document.getElementById("bdp").innerHTML = " - Yüksek";
+                    document.getElementById("bdp").innerHTML = "Yüksek";
                     document.getElementById("bdp").style.color = "green";
                 }
 
                 if ((pdp * 100 / 32) < 25) {
-                    document.getElementById("pdp").innerHTML = " - Düşük";
+                    document.getElementById("pdp").innerHTML = "Düşük";
                     document.getElementById("pdp").style.color = "red";
                 } else if ((pdp * 100 / 32) >= 25 && (pdp * 100 / 32) <= 30) {
-                    document.getElementById("pdp").innerHTML = " - İdeal";
+                    document.getElementById("pdp").innerHTML = "İdeal";
                     document.getElementById("pdp").style.color = "black";
                 } else {
-                    document.getElementById("pdp").innerHTML = " - Yüksek";
+                    document.getElementById("pdp").innerHTML = "Yüksek";
                     document.getElementById("pdp").style.color = "green";
                 }
 
@@ -166,87 +166,87 @@ function sonucAc() {
                     ET5++;
                 }
                 if (disadonukluk <= 7) { //Dışa Dönüklük
-                    document.getElementById("disadonuk").innerHTML = " - Düşük";
+                    document.getElementById("disadonuk").innerHTML = "Düşük";
                     document.getElementById("disadonuk").style.color = "red";
                 } else if (disadonukluk >= 8 && disadonukluk <= 14) {
-                    document.getElementById("disadonuk").innerHTML = " - Düşük";
+                    document.getElementById("disadonuk").innerHTML = "Düşük";
                     document.getElementById("disadonuk").style.color = "orange";
                 } else if (disadonukluk >= 15 && disadonukluk <= 21) {
-                    document.getElementById("disadonuk").innerHTML = " - Orta";
+                    document.getElementById("disadonuk").innerHTML = "Orta";
                     document.getElementById("disadonuk").style.color = "black";
                 } else if (disadonukluk >= 22 && disadonukluk <= 28) {
-                    document.getElementById("disadonuk").innerHTML = " - Yüksek";
+                    document.getElementById("disadonuk").innerHTML = "Yüksek";
                     document.getElementById("disadonuk").style.color = "green";
                 } else if (disadonukluk >= 29 && disadonukluk <= 35) {
-                    document.getElementById("disadonuk").innerHTML = " - Çok Yüksek";
+                    document.getElementById("disadonuk").innerHTML = "Çok Yüksek";
                     document.getElementById("disadonuk").style.color = "darkgreen";
                 }
 
                 if (duygusalDenge <= 8) { //Duygusal Denge
-                    document.getElementById("duygusaldenge").innerHTML = " - Düşük";
+                    document.getElementById("duygusaldenge").innerHTML = "Düşük";
                     document.getElementById("duygusaldenge").style.color = "red";
                 } else if (duygusalDenge >= 9 && duygusalDenge <= 16) {
-                    document.getElementById("duygusaldenge").innerHTML = " - Düşük";
+                    document.getElementById("duygusaldenge").innerHTML = "Düşük";
                     document.getElementById("duygusaldenge").style.color = "orange";
                 } else if (duygusalDenge >= 17 && duygusalDenge <= 24) {
-                    document.getElementById("duygusaldenge").innerHTML = " - Orta";
+                    document.getElementById("duygusaldenge").innerHTML = "Orta";
                     document.getElementById("duygusaldenge").style.color = "black";
                 } else if (duygusalDenge >= 25 && duygusalDenge <= 32) {
-                    document.getElementById("duygusaldenge").innerHTML = " - Yüksek";
+                    document.getElementById("duygusaldenge").innerHTML = "Yüksek";
                     document.getElementById("duygusaldenge").style.color = "green";
                 } else if (duygusalDenge >= 33 && duygusalDenge <= 40) {
-                    document.getElementById("duygusaldenge").innerHTML = " - Çok Yüksek";
+                    document.getElementById("duygusaldenge").innerHTML = "Çok Yüksek";
                     document.getElementById("duygusaldenge").style.color = "darkgreen";
                 }
 
                 if (ozdenetim <= 8) { //Öz Denetim
-                    document.getElementById("ozdenetim").innerHTML = " - Düşük";
+                    document.getElementById("ozdenetim").innerHTML = "Düşük";
                     document.getElementById("ozdenetim").style.color = "red";
                 } else if (ozdenetim >= 9 && ozdenetim <= 16) {
-                    document.getElementById("ozdenetim").innerHTML = " - Düşük";
+                    document.getElementById("ozdenetim").innerHTML = "Düşük";
                     document.getElementById("ozdenetim").style.color = "orange";
                 } else if (ozdenetim >= 17 && ozdenetim <= 24) {
-                    document.getElementById("ozdenetim").innerHTML = " - Orta";
+                    document.getElementById("ozdenetim").innerHTML = "Orta";
                     document.getElementById("ozdenetim").style.color = "black";
                 } else if (ozdenetim >= 25 && ozdenetim <= 32) {
-                    document.getElementById("ozdenetim").innerHTML = " - Yüksek";
+                    document.getElementById("ozdenetim").innerHTML = "Yüksek";
                     document.getElementById("ozdenetim").style.color = "green";
                 } else if (ozdenetim >= 33 && ozdenetim <= 40) {
-                    document.getElementById("ozdenetim").innerHTML = " - Çok Yüksek";
+                    document.getElementById("ozdenetim").innerHTML = "Çok Yüksek";
                     document.getElementById("ozdenetim").style.color = "darkgreen";
                 }
 
                 if (uyumluluk <= 8) { //Uyumluluk
-                    document.getElementById("uyumluluk").innerHTML = " - Düşük";
+                    document.getElementById("uyumluluk").innerHTML = "Düşük";
                     document.getElementById("uyumluluk").style.color = "red";
                 } else if (uyumluluk >= 9 && uyumluluk <= 16) {
-                    document.getElementById("uyumluluk").innerHTML = " - Düşük";
+                    document.getElementById("uyumluluk").innerHTML = "Düşük";
                     document.getElementById("uyumluluk").style.color = "orange";
                 } else if (uyumluluk >= 17 && uyumluluk <= 24) {
-                    document.getElementById("uyumluluk").innerHTML = " - Orta";
+                    document.getElementById("uyumluluk").innerHTML = "Orta";
                     document.getElementById("uyumluluk").style.color = "black";
                 } else if (uyumluluk >= 25 && uyumluluk <= 32) {
-                    document.getElementById("uyumluluk").innerHTML = " - Yüksek";
+                    document.getElementById("uyumluluk").innerHTML = "Yüksek";
                     document.getElementById("uyumluluk").style.color = "green";
                 } else if (uyumluluk >= 33 && uyumluluk <= 40) {
-                    document.getElementById("uyumluluk").innerHTML = " - Çok Yüksek";
+                    document.getElementById("uyumluluk").innerHTML = "Çok Yüksek";
                     document.getElementById("uyumluluk").style.color = "darkgreen";
                 }
 
                 if (yeniligeAciklik <= 8) { //Yeniliğe Açıklık
-                    document.getElementById("yeniligeaciklik").innerHTML = " - Düşük";
+                    document.getElementById("yeniligeaciklik").innerHTML = "Düşük";
                     document.getElementById("yeniligeaciklik").style.color = "red";
                 } else if (yeniligeAciklik >= 9 && yeniligeAciklik <= 16) {
-                    document.getElementById("yeniligeaciklik").innerHTML = " - Düşük";
+                    document.getElementById("yeniligeaciklik").innerHTML = "Düşük";
                     document.getElementById("yeniligeaciklik").style.color = "orange";
                 } else if (yeniligeAciklik >= 17 && yeniligeAciklik <= 24) {
-                    document.getElementById("yeniligeaciklik").innerHTML = " - Orta";
+                    document.getElementById("yeniligeaciklik").innerHTML = "Orta";
                     document.getElementById("yeniligeaciklik").style.color = "black";
                 } else if (yeniligeAciklik >= 25 && yeniligeAciklik <= 32) {
-                    document.getElementById("yeniligeaciklik").innerHTML = " - Yüksek";
+                    document.getElementById("yeniligeaciklik").innerHTML = "Yüksek";
                     document.getElementById("yeniligeaciklik").style.color = "green";
                 } else if (yeniligeAciklik >= 33 && yeniligeAciklik <= 40) {
-                    document.getElementById("yeniligeaciklik").innerHTML = " - Çok Yüksek";
+                    document.getElementById("yeniligeaciklik").innerHTML = "Çok Yüksek";
                     document.getElementById("yeniligeaciklik").style.color = "darkgreen";
                 }
 
@@ -323,21 +323,21 @@ function DTgrafikCiz(gdp,bdp,pdp){
                   backgroundColor: "pink",
                   borderColor: "red",
                   borderWidth: 1,
-                  data: [75, 25, 25]
+                  data: [75, 25*2.14285714285714, 25*2.5]
                 },
                 {
                   label: "En Yüksek",
                   backgroundColor: "lightblue",
                   borderColor: "blue",
                   borderWidth: 1,
-                  data: [85, 35, 30]
+                  data: [85, 35*2.14285714285714, 30*2.5]
                 },
                 {
                   label: "Kişinin Puanı",
                   backgroundColor: "lightgreen",
                   borderColor: "green",
                   borderWidth: 1,
-                  data: [gdp,bdp,pdp]
+                  data: [(gdp*100/72),((bdp*100/36)*2.14285714285714),((pdp*100/32)*2.5)]
                 }
               ]
         },

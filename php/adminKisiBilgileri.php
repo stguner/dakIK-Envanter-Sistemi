@@ -205,12 +205,14 @@ $kullanicisor->execute(array(
 									<hr>
 									<div class="row align-items-center">
 										<div class="col-md-4">
-											<h6><b>Girişken Davranış Puanı</b><span id="gdp"> </span></h6>
-											<h6><b>Baskıcı Davranış Puanı</b><span id="bdp"> </span></h6>
-											<h6><b>Pasif Davranış Puanı</b><span id="pdp"> </span></h6>
+											<b>Girişken Davranış Puanı</b><br><i><span id="gdp"> </span></i>
+											<br>
+											<b>Baskıcı Davranış Puanı</b><br><i><span id="bdp"> </span></i>
+											<br>
+											<b>Pasif Davranış Puanı</b><br><i><span id="pdp"> </span></i>
 										</div>
 										<div class="col-md-8 d-flex justify-content-center">
-										<canvas class="text-center" id="canvas" style="width:100%;max-width:300px;"></canvas>
+										<canvas class="text-center" id="canvas" style="width:100%;max-width:300px;min-height:200px;"></canvas>
 										</div>
 									</div>
 								</div>
@@ -225,11 +227,11 @@ $kullanicisor->execute(array(
 									<hr>
 									<div class="row align-items-center">
 										<div class="col-lg-3">
-											<h6><b>Dışadönüklük</b><span id="disadonuk"> </span></h6>
-											<h6><b>Duygusal Denge</b><span id="duygusaldenge"> </span></h6>
-											<h6><b>Özdenetim</b><span id="ozdenetim"> </span></h6>
-											<h6><b>Uyumluluk</b><span id="uyumluluk"> </span></h6>
-											<h6><b>Yeniliğe Açıklık</b><span id="yeniligeaciklik"> </span></h6>
+											<b>Dışadönüklük :</b><span id="disadonuk"> </span><br>
+											<b>Duygusal Denge :</b><span id="duygusaldenge"> </span><br>
+											<b>Özdenetim :</b><span id="ozdenetim"> </span><br>
+											<b>Uyumluluk :</b><span id="uyumluluk"> </span><br>
+											<b>Yeniliğe Açıklık :</b><span id="yeniligeaciklik"> </span>
 										</div>
 										<div class="col-lg-9 d-inline-block">
 										<canvas id="chart" style="width:100%;max-width:300px;display: inline;"></canvas>
