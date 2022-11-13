@@ -7,6 +7,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // try {
 
 // 	$conn=new PDO("mysql:host=localhost;dbname=titizagrogrup;charset=utf8",'root','');
+//     $conn->exec("SET NAMES UTF8");
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // 	//echo "veritabanı bağlantısı başarılı";
 // }
 
