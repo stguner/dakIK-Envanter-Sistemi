@@ -536,7 +536,6 @@ include 'php/config.php';
 							<input id="field" style="display:none;" type="text" name="field" value="<?php echo date('m.d.y H:i:s'); ?>" size="11" />
 							<hr>
 							<div class="row m-0">
-
 								<div class="col-md-4 pb-3">
 									<label class="col-form-label col-lg-2 font-weight-semibold w-100">TCKN</label>
 									<div class="col-lg-10">
@@ -701,7 +700,7 @@ include 'php/config.php';
 								<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
 									id="loadingbar2" style="width: 0%;"></div>	
 							</div>
-							
+							<div id="baslangic" style="display:none;"></div>
 							<div class="col-md-12">
 								<div class="toast-header bg-slate-600 border-bottom-slate-400 mb-2"
 									style="justify-content:space-between;">

@@ -49,7 +49,8 @@ switch($_GET['mode']){
         if($_POST){
             $bitis = $_POST["bitis"];
             $tckn = $_POST["tckn"];
-            $bitisKontrol = $conn->query("UPDATE cevaplar SET bitis='$bitis' WHERE tckn=$tckn");
+            $baslangic = $_POST["baslangic"];
+            $bitisKontrol = $conn->query("UPDATE cevaplar SET bitis='$bitis' WHERE tckn=$tckn AND baslangic='$baslangic'");
         }
         break;
 

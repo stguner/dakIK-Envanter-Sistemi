@@ -48,17 +48,18 @@ switch($_GET['mode']){
         if($_POST){
             $cevaplar = $_POST['cevaplar'];
             $tckn = $_POST['tckn'];
+            $baslangic = $_POST['baslangic'];
             $parca = explode("-",$cevaplar);
             $soruid = $parca[0];
             $cevap = $parca[1];
             $sturu = $parca[2];
 
             if($sturu == 2){
-                $formKontrol = $conn->query("UPDATE cevaplar SET dt$soruid = '$cevap' WHERE tckn=$tckn");
+                $formKontrol = $conn->query("UPDATE cevaplar SET dt$soruid = '$cevap' WHERE tckn=$tckn and baslangic='$baslangic'");
             }else if($sturu == 3){
-                $formKontrol = $conn->query("UPDATE cevaplar SET et$soruid = '$cevap' WHERE tckn=$tckn");
+                $formKontrol = $conn->query("UPDATE cevaplar SET et$soruid = '$cevap' WHERE tckn=$tckn and baslangic='$baslangic'");
             }else{
-                $formKontrol = $conn->query("UPDATE cevaplar SET kt$soruid = '$cevap' WHERE tckn=$tckn");
+                $formKontrol = $conn->query("UPDATE cevaplar SET kt$soruid = '$cevap' WHERE tckn=$tckn and baslangic='$baslangic'");
             }
         }
         break;

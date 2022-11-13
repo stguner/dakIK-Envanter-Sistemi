@@ -122,6 +122,7 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 		let cinsiyet = (cinsiyetler[0].checked) ? "Erkek" : "Kadın";
 		const dogumTarihi = document.getElementById("dogumTarihi").value;
 		const baslangic = getTimeStamp();
+		document.getElementById("baslangic").innerHTML = baslangic;
 
 		// Burç Hesaplama Başlangıç 
 		var dogumGunuSplitted = dogumTarihi.split("-")
@@ -476,10 +477,11 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 			} else {
 				const bitis = getTimeStamp();
 				const tckn = document.getElementById("tckn").value;
+				const baslangic = document.getElementById("baslangic").innerHTML;
 				$.ajax({
 					type: 'POST',
 					url: 'php/islemler.php?mode=bitis',
-					data: "bitis=" + bitis + "&tckn=" + tckn,
+					data: "bitis=" + bitis + "&tckn=" + tckn + "&baslangic=" + baslangic,
 					success: function (msg) {
 						document.getElementById("div3").style.display = 'none';
 						document.getElementById("div4").style.display = 'block';
@@ -501,10 +503,11 @@ function radiolar() {
 function cevapyaz(e) {
 	document.getElementById("devambuton").children[0].disabled = false;
 	const tckn = document.getElementById("tckn").value;
+	const baslangic = document.getElementById("baslangic").innerHTML;
 	$.ajax({
 		type: 'POST',
 		url: 'php/sorugetir.php?mode=cevapYaz',
-		data: "cevaplar=" + e.value + '&tckn=' + tckn
+		data: "cevaplar=" + e.value + '&tckn=' + tckn + "&baslangic=" + baslangic
 	});
 }
 
