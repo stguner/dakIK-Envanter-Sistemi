@@ -27,7 +27,7 @@ function sonucAc() {
     $.ajax({
       async: false,
       type: "GET",
-      url: "islemler.php?mode=sonuclar",
+      url: "php/islemler.php?mode=sonuclar",
       data: { tckn: tckn },
       success: function (response) {
         var sonuc = JSON.parse(response);

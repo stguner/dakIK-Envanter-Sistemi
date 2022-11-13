@@ -110,7 +110,7 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 	} else if (email.value < 1) {
 		document.getElementById("hatamodal").style.display = 'block';
 		document.getElementById("hatamodal").classList.add('show');
-		document.getElementById("demo").innerHTML = "Lütfen Email alanını boş bırakmadığınızdan emin olun!";
+		document.getElementById("demo").innerHTML = "Lütfen mail adresinizi boş bırakmadığınızdan emin olun!";
 	} else {
 		const tckn = document.getElementById("tckn").value;
 		const kullaniciAdi = document.getElementById("kullaniciAdi").value;
@@ -165,7 +165,7 @@ function formKontrol() { //Form Verilerini Kontrol eder ve db gönderir.
 			burc = ("Oğlak♑");
 		}
 		$.ajax({
-			url: "islemler.php?mode=baslangic",
+			url: "php/islemler.php?mode=baslangic",
 			type: "POST",
 			data: "tckn=" + tckn + '&kullaniciAdi=' + kullaniciAdi + '&baslangic=' + baslangic + '&kullaniciSoyadi=' + kullaniciSoyadi + '&telNo=' + telNo + '&email=' + email + '&cinsiyet=' + cinsiyet + '&dogumTarihi=' + dogumTarihi + '&burc=' + burc,
 			success: function (data) {
@@ -194,7 +194,7 @@ function destroyKullanilmisTCKN() { // kullanılmış TCKN pop-up'ını kapatır
 function tcknSil() { // TCKN'si eşleşen birini sistemden siler
 	const tckn = document.getElementById("tckn").value;
 	$.ajax({
-		url: "islemler.php?mode=tcknSil",
+		url: "php/islemler.php?mode=tcknSil",
 		type: "POST",
 		data: "tckn=" + tckn,
 		success: function (data) {
@@ -227,7 +227,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 			soruSirasiSplitted[random] = temp;
 			$.ajax({
 				type: 'POST',
-				url: 'sorugetir.php?mode=kisilikTesti',
+				url: 'php/sorugetir.php?mode=kisilikTesti',
 				data: "soruid=" + soruSirasiSplitted[gercekSoruSirasi - 1],
 				success: function (msg) {
 					var data = $.parseJSON(msg);
@@ -263,7 +263,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 			var davranisTestiid = gercekSoruSirasi - kisilikTestiSoruSayisi;
 			$.ajax({
 				type: 'POST',
-				url: 'sorugetir.php?mode=davranisTesti',
+				url: 'php/sorugetir.php?mode=davranisTesti',
 				data: "soruid=" + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikTestiSoruSayisi),
 				success: function (msg) {
 					$("#testadi").html('<span class="font-weight-semibold mr-auto" style="font-size:14px;" id="testadi"> <b>DAVRANIŞ TESTİ</b> </span>');
@@ -301,7 +301,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 			var envanterTestiid = gercekSoruSirasi - kisilikArtiDavranisTestiSS;
 			$.ajax({
 				type: 'POST',
-				url: 'sorugetir.php?mode=envanterTesti',
+				url: 'php/sorugetir.php?mode=envanterTesti',
 				data: "soruid=" + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS),
 				success: function (msg) {
 
@@ -381,7 +381,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 			if (gercekSoruSirasi <= kisilikTestiSoruSayisi) {
 				$.ajax({
 					type: 'POST',
-					url: 'sorugetir.php?mode=kisilikTesti',
+					url: 'php/sorugetir.php?mode=kisilikTesti',
 					data: "soruid=" + soruSirasiSplitted[gercekSoruSirasi - 1],
 					success: function (msg) {
 						var data = $.parseJSON(msg);
@@ -415,7 +415,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 				var davranisTestiid = gercekSoruSirasi - kisilikTestiSoruSayisi;
 				$.ajax({
 					type: 'POST',
-					url: 'sorugetir.php?mode=davranisTesti',
+					url: 'php/sorugetir.php?mode=davranisTesti',
 					data: "soruid=" + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikTestiSoruSayisi),
 					success: function (msg) {
 						$("#testadi").html('<span class="font-weight-semibold mr-auto" style="font-size:14px;" id="testadi"> <b>DAVRANIŞ TESTİ</b> </span>');
@@ -449,7 +449,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 				var envanterTestiid = gercekSoruSirasi - kisilikArtiDavranisTestiSS;
 				$.ajax({
 					type: 'POST',
-					url: 'sorugetir.php?mode=envanterTesti',
+					url: 'php/sorugetir.php?mode=envanterTesti',
 					data: "soruid=" + (soruSirasiSplitted[(gercekSoruSirasi - 1)] - kisilikArtiDavranisTestiSS),
 					success: function (msg) {
 
@@ -478,7 +478,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 				const tckn = document.getElementById("tckn").value;
 				$.ajax({
 					type: 'POST',
-					url: 'islemler.php?mode=bitis',
+					url: 'php/islemler.php?mode=bitis',
 					data: "bitis=" + bitis + "&tckn=" + tckn,
 					success: function (msg) {
 						document.getElementById("div3").style.display = 'none';
@@ -503,7 +503,7 @@ function cevapyaz(e) {
 	const tckn = document.getElementById("tckn").value;
 	$.ajax({
 		type: 'POST',
-		url: 'sorugetir.php?mode=cevapYaz',
+		url: 'php/sorugetir.php?mode=cevapYaz',
 		data: "cevaplar=" + e.value + '&tckn=' + tckn
 	});
 }
@@ -513,7 +513,7 @@ function girisYap() { // Yönetim Paneline Giriş Yapmak İçin Şifre Kontrolü
 	const adminSifre = document.getElementById("adminSifre").value;
 	$.ajax({
 		type: 'POST',
-		url: 'islemler.php?mode=adminGiris',
+		url: 'php/islemler.php?mode=adminGiris',
 		data: "adminKullaniciAdi=" + adminKullaniciAdi + '&adminSifre=' + adminSifre,
 		success: function (data) {
 			if (data == true) {

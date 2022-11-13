@@ -40,12 +40,7 @@ switch($_GET['mode']){
             if($arr[0] && $count == 0){
                 $formKontrol = $conn->query("INSERT INTO cevaplar (tckn,telNo,ad,soyad,cinsiyet,dogumTarihi,email,burc,baslangic) VALUES ('$tckn','$telNo','$kullaniciAdi','$kullaniciSoyadi','$cinsiyet','$dogumTarihi','$email','$burc','$baslangic')");
                 $arr[1] = true;
-            }else if($arr[0] && $count > 0){
-                $conn->query("DELETE FROM cevaplar WHERE tckn=$tckn");
-                $formKontrol = $conn->query("INSERT INTO cevaplar (tckn,telNo,ad,soyad,cinsiyet,dogumTarihi,email,burc,baslangic) VALUES ('$tckn','$telNo','$kullaniciAdi','$kullaniciSoyadi','$cinsiyet','$dogumTarihi','$email','$burc','$baslangic')");
-                $arr[1] = false;
             }
-
             echo json_encode($arr); // JS'e array göndermek için kullanırız
 
             }
@@ -73,18 +68,6 @@ switch($_GET['mode']){
         }
         break;
 
-    case 'tcknSil':
-        if($_POST){
-            $tckn = $_POST["tckn"];
-            $bitisKontrol = $conn->query("DELETE FROM cevaplar WHERE tckn=$tckn");
-            $count = $bitisKontrol->rowCount();
-            if($count > 0){
-                echo true;
-            }else{
-                echo false;
-            }
-        }
-        break;
 
     case 'sonuclar':
         if(isset($_GET["tckn"])) {
