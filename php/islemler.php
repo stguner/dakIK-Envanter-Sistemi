@@ -85,58 +85,90 @@ switch($_GET['mode']){
             }
         }
         break;
-    
-    case 'KTsonuclariGetir':
-        if($_POST){
-            $tckn = $_POST["tckn"];
-            $soruid = $_POST["soruid"];
-            $KTA = $_POST["KTA"];
 
-            $formKontrol = $conn->query("SELECT kt$soruid FROM cevaplar WHERE tckn=$tckn");
+    case 'sonuclar':
+        if(isset($_GET["tckn"])) {
+            $formKontrol = $conn->query("SELECT * FROM cevaplar WHERE tckn=".$_GET["tckn"]);
+            $result = $formKontrol->fetch(PDO::FETCH_ASSOC);
             $count = $formKontrol->rowCount();
-            if($count > 0){
-                foreach($formKontrol as $row){
-                    echo $row["kt$soruid"];
+            if ($count > 0) {
+                $obj = new stdClass();
+                // KT hesaplama
+
+                $kisilik = array_slice($result, 11, 40);
+                $kt = array_count_values($kisilik);
+                $obj->kta = $kt['A'];
+                $obj->ktb = $kt['B'];
+                $obj->ktc = $kt['C'];
+                $obj->ktd = $kt['D'];
+
+                // DT hesaplama
+                $davranis = array_slice($result, 51, 35);
+                $gdp = [1, 3, 4, 6, 7, 10, 12, 14, 16, 18, 19, 22, 24, 25, 27, 28, 30, 35];
+                $gdp_total = 0;
+        
+                $bdp = [8, 13, 20, 23, 26, 31, 32, 33, 34];
+                $bdp_total = 0;
+        
+                $pdp = [2, 5, 9, 11, 15, 17, 21, 29];
+                $pdp_total = 0;
+        
+                for ($i = 1; $i < 36; $i++) {
+                    if (in_array($i, $gdp)) {
+                        $gdp_total += $davranis['dt'.$i];
+                    } else if (in_array($i, $bdp)) {
+                        $bdp_total += $davranis['dt'.$i];
+                    } else {
+                        $pdp_total += $davranis['dt'.$i];
+                    }
                 }
-            }else{
-                echo 'Başarısız';
+
+                $obj-> gdp = $gdp_total;
+                $obj-> bdp = $bdp_total;
+                $obj-> pdp = $pdp_total;
+
+                // ET hesaplama
+                $envanter = array_slice($result, 86, 39);
+                $disadonukluk = [1, 2, 8, 10, 11, 13, 39];
+                $disadonukluk_total = 0;
+        
+                $duygusalDenge = [7, 15, 17, 20, 23, 30, 32, 35];
+                $duygusalDenge_total = 0;
+
+                $ozdenetim = [5, 6, 14, 16, 27, 29, 36, 38];
+                $ozdenetim_total = 0;
+
+                $uyumluluk = [3, 18, 21, 25, 28, 33, 34, 37];
+                $uyumluluk_total = 0;
+
+                $yeniligeAciklik = [4, 9, 12, 19, 22, 24, 26, 31];
+                $yeniligeAciklik_total = 0;
+
+                for ($i = 1; $i < 40; $i++) {
+                    if (in_array($i, $disadonukluk)) {
+                        $disadonukluk_total += $envanter['et'.$i];
+                    } else if (in_array($i, $duygusalDenge)) {
+                        $duygusalDenge_total += $envanter['et'.$i];
+                    } else if (in_array($i, $ozdenetim)) {
+                        $ozdenetim_total += $envanter['et'.$i];
+                    } else if (in_array($i, $uyumluluk)) {
+                        $uyumluluk_total += $envanter['et'.$i];
+                    } else {
+                        $yeniligeAciklik_total += $envanter['et'.$i];
+                    }
+                }
+
+                $obj-> disadonukluk = $disadonukluk_total;
+                $obj-> duygusalDenge = $duygusalDenge_total;
+                $obj-> ozdenetim = $ozdenetim_total;
+                $obj-> uyumluluk = $uyumluluk_total;
+                $obj-> yeniligeAciklik = $yeniligeAciklik_total;
+
+                echo json_encode($obj);
             }
         }
         break;
-
-    case 'DTsonuclariGetir':
-        if($_POST){
-            $tckn = $_POST["tckn"];
-            $soruid = $_POST["soruid"];
-
-            $formKontrol = $conn->query("SELECT dt$soruid FROM cevaplar WHERE tckn=$tckn");
-            $count = $formKontrol->rowCount();
-            if($count > 0){
-                foreach($formKontrol as $row){
-                    echo $row["dt$soruid"];
-                }
-            }else{
-                echo 'Başarısız';
-            }
-        }
-        break;
-    
-    case 'ETsonuclariGetir':
-        if($_POST){
-            $tckn = $_POST["tckn"];
-            $soruid = $_POST["soruid"];
-
-            $formKontrol = $conn->query("SELECT et$soruid FROM cevaplar WHERE tckn=$tckn");
-            $count = $formKontrol->rowCount();
-            if($count > 0){
-                foreach($formKontrol as $row){
-                    echo $row["et$soruid"];
-                }
-            }else{
-                echo 'Başarısız';
-            }
-        }
-        break;
+        
 
     case 'mailGonder':
         if($_POST){
@@ -178,8 +210,6 @@ switch($_GET['mode']){
     
     }
 
-    
-
-
+   
 
 ?>

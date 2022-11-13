@@ -10,20 +10,10 @@ var neseliVeHayalci = 0;
 var otoriter;
 var sakin = 0;
 var titiz = 0;
-var KTB = 0;
 var KTA = 0;
+var KTB = 0;
 var KTC = 0;
 var KTD = 0;
-var DT0 = 0;
-var DT1 = 0;
-var DT2 = 0;
-var DT3 = 0;
-var DT4 = 0;
-var ET5 = 0;
-var ET1 = 0;
-var ET2 = 0;
-var ET3 = 0;
-var ET4 = 0;
 var gdp = 0;
 var bdp = 0;
 var pdp = 0;
@@ -34,107 +24,59 @@ var uyumluluk = 0;
 var yeniligeAciklik = 0;
 
 function sonucAc() {
-    for (let i = 1; i < KTsoruSayisi + 1; i++) {
-        $.ajax({
-            async:false,
-            type: 'POST',
-            url: 'islemler.php?mode=KTsonuclariGetir',
-            data: "soruid=" + i + '&tckn=' + tckn + '&KTA=' + KTA+ '&KTB=' + KTB+ '&KTC=' + KTC+ '&KTD=' + KTD,
-            success: function (msg) {
-                if ("B" == msg.toString()) {
-                    KTB++;
-                } else if ("D" == msg.toString()) {
-                    KTD++;
-                } else if ("C" == msg.toString()) {
-                    KTC++;
-                } else if ("A" == msg.toString()) {
-                    KTA++;
-                }
-                neseliVeHayalci = ((KTA/40)*100);
-                otoriter = ((KTB/40)*100);
-                sakin = ((KTC/40)*100);
-                titiz = ((KTD/40)*100);
-            }
+    $.ajax({
+      async: false,
+      type: "GET",
+      url: "islemler.php?mode=sonuclar",
+      data: { tckn: tckn },
+      success: function (response) {
+        var sonuc = JSON.parse(response);
+        
+        KTA = sonuc.kta;
+        KTB = sonuc.ktb;
+        KTC = sonuc.ktc;
+        KTD = sonuc.ktd;
 
-        });
+        gdp = sonuc.gdp;
+        bdp = sonuc.bdp;
+        pdp = sonuc.pdp;
 
-    }
+        disadonukluk = sonuc.disadonukluk;
+        duygusalDenge = sonuc.duygusalDenge;
+        ozdenetim = sonuc.ozdenetim;
+        uyumluluk = sonuc.uyumluluk;
+        yeniligeAciklik = sonuc.yeniligeAciklik;
+      }
+    });
+
+    neseliVeHayalci = ((KTA/40)*100);
+    otoriter = ((KTB/40)*100);
+    sakin = ((KTC/40)*100);
+    titiz = ((KTD/40)*100);
     KTgrafikCiz(otoriter,neseliVeHayalci,sakin,titiz);
 
-    for (let i = 1; i < DTsoruSayisi + 1; i++) {
-        $.ajax({
-            async:false,
-            type: 'POST',
-            url: 'islemler.php?mode=DTsonuclariGetir',
-            data: "soruid=" + i + '&tckn=' + tckn,
-            success: function (msg) {
-                if (i == 1 || i == 3 || i == 4 || i == 6 || i == 7 || i == 10 || i == 12 || i == 14 || i == 16 || i == 18 || i == 19 || i == 22 || i == 24 || i == 25 || i == 27 || i == 28 || i == 30 || i == 35) {
-                  gdp += parseInt(msg[0]);
-                }
-                if (i == 8 || i == 13 || i == 20 || i == 23 || i == 26 || i == 31 || i == 32 || i == 33 || i == 34) {
-                    bdp += parseInt(msg[0]);
-                }
-                if (i == 2 || i == 5 || i == 9 || i == 11 || i == 15 || i == 17 || i == 21 || i == 29) {
-                    pdp += parseInt(msg[0]);
-                }
-                if ("0" == msg.toString()) {
-                    DT0++;
-                } else if ("1" == msg.toString()) {
-                    DT1++;
-                } else if ("2" == msg.toString()) {
-                    DT2++;
-                } else if ("3" == msg.toString()) {
-                    DT3++;
-                } else if ("4" == msg.toString()) {
-                    DT4++;
-                }
-
-
-                if (((gdp*100)/72) < 75) {
-                    document.getElementById("gdp").innerHTML = "Düşük";
-                    document.getElementById("gdp").style.color = "red";
-                } else if (((gdp*100)/72) >= 75 && ((gdp*100)/72) <= 85) {
-                    document.getElementById("gdp").innerHTML = "İdeal";
-                    document.getElementById("gdp").style.color = "black";
-                } else {
-                    document.getElementById("gdp").innerHTML = "Yüksek";
-                    document.getElementById("gdp").style.color = "green";
-                }
-
-                if ((bdp * 100 / 36) < 25) {
-                    document.getElementById("bdp").innerHTML = "Düşük";
-                    document.getElementById("bdp").style.color = "red";
-                } else if ((bdp * 100 / 36) >= 25 && (bdp * 100 / 36) <= 35) {
-                    document.getElementById("bdp").innerHTML = "İdeal";
-                    document.getElementById("bdp").style.color = "black";
-                } else {
-                    document.getElementById("bdp").innerHTML = "Yüksek";
-                    document.getElementById("bdp").style.color = "green";
-                }
-
-                if ((pdp * 100 / 32) < 25) {
-                    document.getElementById("pdp").innerHTML = "Düşük";
-                    document.getElementById("pdp").style.color = "red";
-                } else if ((pdp * 100 / 32) >= 25 && (pdp * 100 / 32) <= 30) {
-                    document.getElementById("pdp").innerHTML = "İdeal";
-                    document.getElementById("pdp").style.color = "black";
-                } else {
-                    document.getElementById("pdp").innerHTML = "Yüksek";
-                    document.getElementById("pdp").style.color = "green";
-                }
-
-            }
-
-
-        });
-
+    function DTSonuclari(type, data, low, high) {
+      if (data < low) {
+        document.getElementById(type).innerHTML += "Düşük";
+        document.getElementById(type).style.color = "red";
+      } else if(low <= data <= high) {
+        document.getElementById(type).innerHTML += "İdeal";
+        document.getElementById(type).style.color = "black";
+      } else {
+        document.getElementById(type).innerHTML += "Yüksek";
+        document.getElementById(type).style.color = "green";
+      }
     }
+
+    DTSonuclari("gdp", gdp*100/72, 75, 85);
+    DTSonuclari("bdp", bdp*100/36, 25, 35);
+    DTSonuclari("pdp", gdp*100/32, 25, 35);
 
     DTgrafikCiz(gdp,bdp,pdp);
 
     for (let i = 1; i < ETsoruSayisi + 1; i++) {
         $.ajax({
-            async: false,
+            async:false,
             type: 'POST',
             url: 'islemler.php?mode=ETsonuclariGetir',
             data: "soruid=" + i + '&tckn=' + tckn + '&disadonukluk=' + disadonukluk,
@@ -253,6 +195,13 @@ function sonucAc() {
             }
         });
     }
+
+    ETSonuclari("disadonuk", disadonukluk, 7);
+    ETSonuclari("duygusaldenge", duygusalDenge, 8);
+    ETSonuclari("ozdenetim", ozdenetim, 8);
+    ETSonuclari("uyumluluk", uyumluluk, 8);
+    ETSonuclari("yeniligeaciklik", yeniligeAciklik, 8);
+
     ETgrafikCiz1(disadonukluk);
     ETgrafikCiz2(duygusalDenge);
     ETgrafikCiz3(ozdenetim);
@@ -277,7 +226,7 @@ function telNoAc() {
 
 function KTgrafikCiz(otoriter,neseli,sakin,titiz){
     document.getElementById("otoriter").innerHTML += otoriter;
-    document.getElementById("neseli").innerHTML += neseliVeHayalci;
+    document.getElementById("neseli").innerHTML += neseli;
     document.getElementById("sakin").innerHTML += sakin;
     document.getElementById("titiz").innerHTML += titiz;
 
