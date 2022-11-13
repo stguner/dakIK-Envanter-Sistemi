@@ -44,8 +44,8 @@ $kullanicisor->execute(array(
 			<div class="dropdown pt-1">
 				<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
 					id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-					<strong>Süleyman</strong>
+					<img src="../assets/admin_photo.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+					<strong>Admin</strong>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 					<li><a class="dropdown-item" href="#">Profil</a></li>
