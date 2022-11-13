@@ -257,7 +257,7 @@ $kullanicisor->execute(array(
 		function sendemail()
 {
     $.ajax({
-		url: "islemler.php?mode=mailGonder",
+		url: "php/islemler.php?mode=mailGonder",
 		type: "POST",
 		data: "neseli=" + neseli + "&otoriter=" + otoriter + "&sakin=" + sakin + "&titiz=" + titiz,
 		success: function (data) {

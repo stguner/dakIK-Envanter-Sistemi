@@ -17,18 +17,18 @@ include 'config.php';
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/adminStyle.css">
+	<link rel="stylesheet" href="../css/adminStyle.css">
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 d-flex w-100" style="justify-content:space-between;">
 		<div class="leftSideNavbar w-50" style="display:flex; justify-content:left; padding-left: 16px;">
-			<a class="navbar-brand" href="loggedinAdminPanel.php"> dakİK Envanter Testleri</a>
+			<a class="navbar-brand" href="loggedinAdminPanel"> dakİK Envanter Testleri</a>
 		</div>
 		<div class="rightSideNavbar w-50" style="display:flex; justify-content:right; padding-right: 16px;">
 			<ul class="nav nav-pills anasayfa" style="padding-right: 16px;">
 				<li class="nav-item">
-					<a href="loggedinAdminPanel.php" class="nav-link active" aria-current="page" >
+					<a href="loggedinAdminPanel" class="nav-link active" aria-current="page" >
 						<i class="fa-solid fa-house pt-1"></i>
 						Anasayfa
 					</a>

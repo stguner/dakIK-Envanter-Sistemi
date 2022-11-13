@@ -329,7 +329,7 @@ function sorugetir(soruid) { // Soruyu DB'den çekip getirir.
 			const tckn = document.getElementById("tckn").value;
 			$.ajax({
 				type: 'POST',
-				url: 'islemler.php?mode=bitis',
+				url: 'php/islemler.php?mode=bitis',
 				data: "bitis=" + bitis + "&tckn=" + tckn,
 				success: function (msg) {
 					document.getElementById("div3").style.display = 'none';
@@ -513,7 +513,7 @@ function girisYap() { // Yönetim Paneline Giriş Yapmak İçin Şifre Kontrolü
 	const adminSifre = document.getElementById("adminSifre").value;
 	$.ajax({
 		type: 'POST',
-		url: 'php/islemler.php?mode=adminGiris',
+		url: 'islemler.php?mode=adminGiris',
 		data: "adminKullaniciAdi=" + adminKullaniciAdi + '&adminSifre=' + adminSifre,
 		success: function (data) {
 			if (data == true) {
