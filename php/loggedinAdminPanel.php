@@ -59,7 +59,7 @@ include 'config.php';
 							<h3 class="card-title">KAYIT YAPAN KULLANICILAR</h3>
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search" class="form-control float-right"
+									<input type="text" id="aramakutusu" onkeyup="tabloarama()" class="form-control float-right"
 										placeholder="Ara">
 									<div class="input-group-append">
 										<button type="submit" class="btn btn-default pt-2">
@@ -76,7 +76,7 @@ include 'config.php';
 				$query->execute();
 				if($query->rowCount()){
 					?>
-							<table class="table table-hover text-nowrap">
+							<table class="table table-hover text-nowrap" id="AranabilirTablo">
 								<thead>
 									<tr>
 										<th>#</th>
@@ -109,7 +109,7 @@ include 'config.php';
 										<td><?php echo $row['tckn'] ?></td>
 										<td><?php echo $row['email'] ?></td>
 										<td><?php echo $row['dogumTarihi'][8],$row['dogumTarihi'][9]?><span>.</span><?php echo $row['dogumTarihi'][5],$row['dogumTarihi'][6]?><span>.</span><?php echo $row['dogumTarihi'][0],$row['dogumTarihi'][1],$row['dogumTarihi'][2],$row['dogumTarihi'][3]?></td>
-										<td><a href="adminKisiBilgileri?tckn=<?php echo $row['tckn'] ?>"><button
+										<td><a href="adminKisiBilgileri?tckn=<?php echo $row['tckn']?>&kayit_id=<?php echo $row['kayit_id']?>"><button
 											class="btn btn-primary py-0">Gözat</button></a></td>
 									</tr>
 									<?php } ?>
@@ -128,6 +128,19 @@ include 'config.php';
 			</div>
 
 	</div>
+	<script>
+ function tabloarama() {
+  var e, t, n, a, l;
+  for (e = document.getElementById("aramakutusu").value.toUpperCase(), t = document.getElementById("AranabilirTablo").getElementsByTagName("tr"), l = 1; l < t.length; l++) {
+    t[l].style.display = "none", n = t[l].getElementsByTagName("td");
+    for (var m = 0; m < n.length; m++)
+      if ((a = t[l].getElementsByTagName("td")[m]) && a.innerHTML.toUpperCase().indexOf(e) > -1) {
+        t[l].style.display = "";
+        break
+      }
+  }
+}
+</script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 	<script src="https://kit.fontawesome.com/35e8266fdf.js" crossorigin="anonymous"></script>
 </body>
