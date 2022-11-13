@@ -32,10 +32,10 @@ function sonucAc() {
       success: function (response) {
         var sonuc = JSON.parse(response);
         
-        KTA = sonuc.KTA;
-        KTB = sonuc.KTB;
-        KTC = sonuc.KTC;
-        KTD = sonuc.KTD;
+        KTA = sonuc.kta;
+        KTB = sonuc.ktb;
+        KTC = sonuc.ktc;
+        KTD = sonuc.ktd;
 
         gdp = sonuc.gdp;
         bdp = sonuc.bdp;
