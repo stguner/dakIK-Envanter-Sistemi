@@ -74,126 +74,24 @@ function sonucAc() {
 
     DTgrafikCiz(gdp,bdp,pdp);
 
-    for (let i = 1; i < ETsoruSayisi + 1; i++) {
-        $.ajax({
-            async:false,
-            type: 'POST',
-            url: 'islemler.php?mode=ETsonuclariGetir',
-            data: "soruid=" + i + '&tckn=' + tckn + '&disadonukluk=' + disadonukluk,
-            success: function (msg) {
-                if (i == 1 || i == 2 || i == 8 || i == 10 || i == 11 || i == 13 || i == 39) {
-                    disadonukluk += parseInt(msg[0]);
-                }
-                if (i == 7 || i == 15 || i == 17 || i == 20 || i == 23 || i == 30 || i == 32 || i == 35) {
-                    duygusalDenge += parseInt(msg[0]);
-                }
-                if (i == 5 || i == 6 || i == 14 || i == 16 || i == 27 || i == 29 || i == 36 || i == 38) {
-                    ozdenetim += parseInt(msg[0]);
-                }
-                if (i == 3 || i == 18 || i == 21 || i == 25 || i == 28 || i == 33 || i == 34 || i == 37) {
-                    uyumluluk += parseInt(msg[0]);
-                }
-                if (i == 4 || i == 9 || i == 12 || i == 19 || i == 22 || i == 24 || i == 26 || i == 31) {
-                    yeniligeAciklik += parseInt(msg[0]);
-                }
-                if ("1" == msg.toString()) {
-                    ET1++;
-                } else if ("2" == msg.toString()) {
-                    ET2++;
-                } else if ("3" == msg.toString()) {
-                    ET3++;
-                } else if ("4" == msg.toString()) {
-                    ET4++;
-                } else if ("5" == msg.toString()) {
-                    ET5++;
-                }
-                if (disadonukluk <= 7) { //Dışa Dönüklük
-                    document.getElementById("disadonuk").innerHTML = "Düşük";
-                    document.getElementById("disadonuk").style.color = "red";
-                } else if (disadonukluk >= 8 && disadonukluk <= 14) {
-                    document.getElementById("disadonuk").innerHTML = "Düşük";
-                    document.getElementById("disadonuk").style.color = "orange";
-                } else if (disadonukluk >= 15 && disadonukluk <= 21) {
-                    document.getElementById("disadonuk").innerHTML = "Orta";
-                    document.getElementById("disadonuk").style.color = "black";
-                } else if (disadonukluk >= 22 && disadonukluk <= 28) {
-                    document.getElementById("disadonuk").innerHTML = "Yüksek";
-                    document.getElementById("disadonuk").style.color = "green";
-                } else if (disadonukluk >= 29 && disadonukluk <= 35) {
-                    document.getElementById("disadonuk").innerHTML = "Çok Yüksek";
-                    document.getElementById("disadonuk").style.color = "darkgreen";
-                }
-
-                if (duygusalDenge <= 8) { //Duygusal Denge
-                    document.getElementById("duygusaldenge").innerHTML = "Düşük";
-                    document.getElementById("duygusaldenge").style.color = "red";
-                } else if (duygusalDenge >= 9 && duygusalDenge <= 16) {
-                    document.getElementById("duygusaldenge").innerHTML = "Düşük";
-                    document.getElementById("duygusaldenge").style.color = "orange";
-                } else if (duygusalDenge >= 17 && duygusalDenge <= 24) {
-                    document.getElementById("duygusaldenge").innerHTML = "Orta";
-                    document.getElementById("duygusaldenge").style.color = "black";
-                } else if (duygusalDenge >= 25 && duygusalDenge <= 32) {
-                    document.getElementById("duygusaldenge").innerHTML = "Yüksek";
-                    document.getElementById("duygusaldenge").style.color = "green";
-                } else if (duygusalDenge >= 33 && duygusalDenge <= 40) {
-                    document.getElementById("duygusaldenge").innerHTML = "Çok Yüksek";
-                    document.getElementById("duygusaldenge").style.color = "darkgreen";
-                }
-
-                if (ozdenetim <= 8) { //Öz Denetim
-                    document.getElementById("ozdenetim").innerHTML = "Düşük";
-                    document.getElementById("ozdenetim").style.color = "red";
-                } else if (ozdenetim >= 9 && ozdenetim <= 16) {
-                    document.getElementById("ozdenetim").innerHTML = "Düşük";
-                    document.getElementById("ozdenetim").style.color = "orange";
-                } else if (ozdenetim >= 17 && ozdenetim <= 24) {
-                    document.getElementById("ozdenetim").innerHTML = "Orta";
-                    document.getElementById("ozdenetim").style.color = "black";
-                } else if (ozdenetim >= 25 && ozdenetim <= 32) {
-                    document.getElementById("ozdenetim").innerHTML = "Yüksek";
-                    document.getElementById("ozdenetim").style.color = "green";
-                } else if (ozdenetim >= 33 && ozdenetim <= 40) {
-                    document.getElementById("ozdenetim").innerHTML = "Çok Yüksek";
-                    document.getElementById("ozdenetim").style.color = "darkgreen";
-                }
-
-                if (uyumluluk <= 8) { //Uyumluluk
-                    document.getElementById("uyumluluk").innerHTML = "Düşük";
-                    document.getElementById("uyumluluk").style.color = "red";
-                } else if (uyumluluk >= 9 && uyumluluk <= 16) {
-                    document.getElementById("uyumluluk").innerHTML = "Düşük";
-                    document.getElementById("uyumluluk").style.color = "orange";
-                } else if (uyumluluk >= 17 && uyumluluk <= 24) {
-                    document.getElementById("uyumluluk").innerHTML = "Orta";
-                    document.getElementById("uyumluluk").style.color = "black";
-                } else if (uyumluluk >= 25 && uyumluluk <= 32) {
-                    document.getElementById("uyumluluk").innerHTML = "Yüksek";
-                    document.getElementById("uyumluluk").style.color = "green";
-                } else if (uyumluluk >= 33 && uyumluluk <= 40) {
-                    document.getElementById("uyumluluk").innerHTML = "Çok Yüksek";
-                    document.getElementById("uyumluluk").style.color = "darkgreen";
-                }
-
-                if (yeniligeAciklik <= 8) { //Yeniliğe Açıklık
-                    document.getElementById("yeniligeaciklik").innerHTML = "Düşük";
-                    document.getElementById("yeniligeaciklik").style.color = "red";
-                } else if (yeniligeAciklik >= 9 && yeniligeAciklik <= 16) {
-                    document.getElementById("yeniligeaciklik").innerHTML = "Düşük";
-                    document.getElementById("yeniligeaciklik").style.color = "orange";
-                } else if (yeniligeAciklik >= 17 && yeniligeAciklik <= 24) {
-                    document.getElementById("yeniligeaciklik").innerHTML = "Orta";
-                    document.getElementById("yeniligeaciklik").style.color = "black";
-                } else if (yeniligeAciklik >= 25 && yeniligeAciklik <= 32) {
-                    document.getElementById("yeniligeaciklik").innerHTML = "Yüksek";
-                    document.getElementById("yeniligeaciklik").style.color = "green";
-                } else if (yeniligeAciklik >= 33 && yeniligeAciklik <= 40) {
-                    document.getElementById("yeniligeaciklik").innerHTML = "Çok Yüksek";
-                    document.getElementById("yeniligeaciklik").style.color = "darkgreen";
-                }
-
-            }
-        });
+    // stepSize: aralık değeri = disadonukluk için 7, diğerleri için 8
+    function ETSonuclari(type, data, stepSize) {
+      if (data <= stepSize) {
+        document.getElementById(type).innerHTML += "Düşük";
+        document.getElementById(type).style.color = "red";
+      } else if (stepSize < data && data <= stepSize * 2) {
+        document.getElementById(type).innerHTML += "Düşük";
+        document.getElementById(type).style.color = "orange";
+      } else if (stepSize * 2 < data  && data <= stepSize * 3) {
+        document.getElementById(type).innerHTML += "Orta";
+        document.getElementById(type).style.color = "black";
+      } else if (stepSize * 3 < data  && data <= stepSize * 4) {
+        document.getElementById(type).innerHTML += "Yüksek";
+        document.getElementById(type).style.color = "green";
+      } else if (stepSize * 4 < data && data <= stepSize * 5) {
+        document.getElementById(type).innerHTML += "Çok Yüksek";
+        document.getElementById(type).style.color = "darkgreen";
+      }
     }
 
     ETSonuclari("disadonuk", disadonukluk, 7);
