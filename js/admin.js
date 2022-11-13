@@ -59,7 +59,7 @@ function sonucAc() {
       if (data < low) {
         document.getElementById(type).innerHTML += "Düşük";
         document.getElementById(type).style.color = "red";
-      } else if(low <= data <= high) {
+      } else if(low <= data && data <= high) {
         document.getElementById(type).innerHTML += "İdeal";
         document.getElementById(type).style.color = "black";
       } else {
