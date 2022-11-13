@@ -836,15 +836,6 @@ include 'php/config.php';
   </footer>
 	</div>
 	<!-- Content area -->
-	<script type="text/javascript">
-	function getTimeStamp() {
-       var now = new Date();
-       return ((now.getDate()) + '/' + (now.getMonth() + 1) + '/' + now.getFullYear() + " " + ((now.getHours() < 10) ? ("0" + now.getHours()) : (now.getHours())) + ':'
-                     + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())) + ':' + ((now.getSeconds() < 10) ? ("0" + now
-                     .getSeconds()) : (now.getSeconds())));
-	}
-
-	</script>
 	<script src="js/dakik.js"></script>
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
