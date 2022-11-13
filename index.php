@@ -1,5 +1,5 @@
 <?php 
-include 'config.php';
+include 'php/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@ include 'config.php';
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body style="background-color: #F5F5F5;">
@@ -32,7 +32,7 @@ include 'config.php';
 						<span> / Kişilik ve Davranış Testi</span>
 					</div>
 					<div style="padding-right: 16px; text-align:right;">
-						<a href="adminPanel.php" style="text-decoration: none;">Yönetici Girişi</a>
+						<a href="php/adminPanel" style="text-decoration: none;">Yönetici Girişi</a>
 					</div>
 				</div>
 			</header>
@@ -805,7 +805,7 @@ include 'config.php';
 							<div class="col-md-12">
 								<div class="d-flex" style="justify-content:center;">
 								</div>
-								<img src="../assets/okey.gif" alt="Testi bitirdiniz"  width="250" />
+								<img src="assets/okey.gif" alt="Testi bitirdiniz"  width="250" />
 								<h3 style="color:green;">Testi bitirdiniz.</h3>
 								<p>Sorularımızı cevaplandırdığınız için teşekkürler. İnsan Kaynakları departmanı test sonuçlarınızı
 									değerlendirip iletişim adresinize dönüş sağlayacaktır.
@@ -845,7 +845,7 @@ include 'config.php';
 	}
 
 	</script>
-	<script src="../js/dakik.js"></script>
+	<script src="js/dakik.js"></script>
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 	<script src="https://kit.fontawesome.com/35e8266fdf.js" crossorigin="anonymous"></script>

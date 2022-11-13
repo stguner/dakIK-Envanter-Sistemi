@@ -17,7 +17,7 @@ include 'config.php';
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../css/adminStyle.css">
+	<link rel="stylesheet" href="css/adminStyle.css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@ include 'config.php';
 				<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
 					id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-					<strong>Süleyman</strong>
+					<strong>Admin</strong>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 					<li><a class="dropdown-item" href="#">Profil</a></li>
@@ -109,7 +109,7 @@ include 'config.php';
 										<td><?php echo $row['tckn'] ?></td>
 										<td><?php echo $row['email'] ?></td>
 										<td><?php echo $row['dogumTarihi'][8],$row['dogumTarihi'][9]?><span>.</span><?php echo $row['dogumTarihi'][5],$row['dogumTarihi'][6]?><span>.</span><?php echo $row['dogumTarihi'][0],$row['dogumTarihi'][1],$row['dogumTarihi'][2],$row['dogumTarihi'][3]?></td>
-										<td><a href="adminKisiBilgileri.php?tckn=<?php echo $row['tckn'] ?>"><button
+										<td><a href="adminKisiBilgileri?tckn=<?php echo $row['tckn'] ?>"><button
 											class="btn btn-primary py-0">Gözat</button></a></td>
 									</tr>
 									<?php } ?>

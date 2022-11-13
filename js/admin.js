@@ -2,7 +2,7 @@ window.onload = function () {
     sonucAc();
 };
 
-const tckn = document.getElementById("tckn").innerHTML;
+const tckn = parseInt(document.getElementById("tckn").innerHTML);
 const KTsoruSayisi = 40;
 const DTsoruSayisi = 35;
 const ETsoruSayisi = 39;
@@ -134,7 +134,7 @@ function sonucAc() {
 
     for (let i = 1; i < ETsoruSayisi + 1; i++) {
         $.ajax({
-            async:false,
+            async: false,
             type: 'POST',
             url: 'islemler.php?mode=ETsonuclariGetir',
             data: "soruid=" + i + '&tckn=' + tckn + '&disadonukluk=' + disadonukluk,
@@ -323,21 +323,21 @@ function DTgrafikCiz(gdp,bdp,pdp){
                   backgroundColor: "pink",
                   borderColor: "red",
                   borderWidth: 1,
-                  data: [75, 25*2.14285714285714, 25*2.5]
+                  data: [75, (25*2.14285714285714).toFixed(2), (25*2.5).toFixed(2)]
                 },
                 {
                   label: "En Yüksek",
                   backgroundColor: "lightblue",
                   borderColor: "blue",
                   borderWidth: 1,
-                  data: [85, 35*2.14285714285714, 30*2.5]
+                  data: [85, (35*2.14285714285714).toFixed(2), (30*2.5).toFixed(2)]
                 },
                 {
                   label: "Kişinin Puanı",
                   backgroundColor: "lightgreen",
                   borderColor: "green",
                   borderWidth: 1,
-                  data: [(gdp*100/72),((bdp*100/36)*2.14285714285714),((pdp*100/32)*2.5)]
+                  data: [(gdp*100/72).toFixed(2),((bdp*100/36)*2.14285714285714).toFixed(2),((pdp*100/32)*2.5).toFixed(2)]
                 }
               ]
         },
@@ -366,7 +366,7 @@ function ETgrafikCiz1(disadonukluk){
           responsive: true,
           title: {
             display: true,
-            text: 'Dışa Dönüklük'
+            text: 'Dışa Dönüklük - ' + document.getElementById("disadonuk").innerHTML
           },
           layout: {
             padding: {
@@ -407,7 +407,7 @@ function ETgrafikCiz2(duygusalDenge){
           responsive: true,
           title: {
             display: true,
-            text: 'Duygusal Denge'
+            text: 'Duygusal Denge - ' + document.getElementById("duygusaldenge").innerHTML
           },
           layout: {
             padding: {
@@ -448,7 +448,7 @@ function ETgrafikCiz3(ozdenetim){
           responsive: true,
           title: {
             display: true,
-            text: 'Özdenetim'
+            text: 'Özdenetim - ' + document.getElementById("ozdenetim").innerHTML
           },
           layout: {
             padding: {
@@ -489,7 +489,7 @@ function ETgrafikCiz4(uyumluluk){
           responsive: true,
           title: {
             display: true,
-            text: 'Uyumluluk'
+            text: 'Uyumluluk - ' + document.getElementById("uyumluluk").innerHTML
           },
           layout: {
             padding: {
@@ -530,7 +530,7 @@ function ETgrafikCiz5(yeniligeAciklik){
           responsive: true,
           title: {
             display: true,
-            text: 'Yeniliğe Açıklık'
+            text: 'Yeniliğe Açıklık - ' + document.getElementById("yeniligeaciklik").innerHTML
           },
           layout: {
             padding: {

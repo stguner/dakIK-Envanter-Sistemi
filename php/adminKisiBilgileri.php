@@ -30,12 +30,12 @@ $kullanicisor->execute(array(
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 d-flex w-100" style="justify-content:space-between;">
 		<div class="leftSideNavbar w-50" style="display:flex; justify-content:left; padding-left: 16px;">
-			<a class="navbar-brand" href="loggedinAdminPanel.php"> dakİK Envanter Testleri</a>
+			<a class="navbar-brand" href="loggedinAdminPanel"> dakİK Envanter Testleri</a>
 		</div>
 		<div class="rightSideNavbar w-50" style="display:flex; justify-content:right; padding-right: 16px;">
 			<ul class="nav nav-pills anasayfa" style="padding-right: 16px;">
 				<li class="nav-item">
-					<a href="loggedinAdminPanel.php" class="nav-link active" aria-current="page">
+					<a href="loggedinAdminPanel" class="nav-link active" aria-current="page">
 						<i class="fa-solid fa-house pt-1"></i>
 						Anasayfa
 					</a>
@@ -45,7 +45,7 @@ $kullanicisor->execute(array(
 				<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
 					id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-					<strong>Süleyman</strong>
+					<strong>Admin</strong>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 					<li><a class="dropdown-item" href="#">Profil</a></li>
@@ -53,7 +53,7 @@ $kullanicisor->execute(array(
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="index.php">Çıkış Yap</a></li>
+					<li><a class="dropdown-item" href="../index">Çıkış Yap</a></li>
 				</ul>
 			</div>
 		</div>
@@ -226,19 +226,19 @@ $kullanicisor->execute(array(
 									<h6 class="pt-3"><h3>ENVANTER TESTİ SONUÇLARI</h3></h6>
 									<hr>
 									<div class="row align-items-center">
-										<div class="col-lg-3">
-											<b>Dışadönüklük :</b><span id="disadonuk"> </span><br>
-											<b>Duygusal Denge :</b><span id="duygusaldenge"> </span><br>
-											<b>Özdenetim :</b><span id="ozdenetim"> </span><br>
-											<b>Uyumluluk :</b><span id="uyumluluk"> </span><br>
-											<b>Yeniliğe Açıklık :</b><span id="yeniligeaciklik"> </span>
-										</div>
-										<div class="col-lg-9 d-inline-block">
-										<canvas id="chart" style="width:100%;max-width:300px;display: inline;"></canvas>
-										<canvas id="chart2" style="width:100%;max-width:300px;display: inline;"></canvas>
-										<canvas id="chart3" style="width:100%;max-width:300px;display: inline;"></canvas>
-										<canvas id="chart4" style="width:100%;max-width:300px;display: inline;"></canvas>
-										<canvas id="chart5" style="width:100%;max-width:300px;display: inline;"></canvas>
+										
+											<b style="display:none;">Dışadönüklük :</b><span style="display:none;" id="disadonuk"> </span><br>
+											<b style="display:none;">Duygusal Denge :</b><span style="display:none;" id="duygusaldenge"> </span><br>
+											<b style="display:none;">Özdenetim :</b><span style="display:none;" id="ozdenetim"> </span><br>
+											<b style="display:none;">Uyumluluk :</b><span style="display:none;" id="uyumluluk"> </span><br>
+											<b style="display:none;">Yeniliğe Açıklık :</b><span style="display:none;" id="yeniligeaciklik"> </span>
+										
+										<div class="col-lg-12 d-inline-block text-center">
+										<canvas id="chart" style="width:100%;max-width:225px;display: inline;"></canvas>
+										<canvas id="chart2" style="width:100%;max-width:225px;display: inline;"></canvas>
+										<canvas id="chart3" style="width:100%;max-width:225px;display: inline;"></canvas>
+										<canvas id="chart4" style="width:100%;max-width:225px;display: inline;"></canvas>
+										<canvas id="chart5" style="width:100%;max-width:225px;display: inline;"></canvas>
 										</div>
 									</div>
 								</div>
@@ -259,7 +259,7 @@ $kullanicisor->execute(array(
     $.ajax({
 		url: "islemler.php?mode=mailGonder",
 		type: "POST",
-		data: "neseli=" + neseli,"&otoriter=" + otoriter,"&sakin=" + sakin,"&titiz=" + titiz,
+		data: "neseli=" + neseli + "&otoriter=" + otoriter + "&sakin=" + sakin + "&titiz=" + titiz,
 		success: function (data) {
 			if (data == true) {
 				alert("Mail Başarıyla Gönderildi");

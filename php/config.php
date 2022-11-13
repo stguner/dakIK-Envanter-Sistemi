@@ -1,5 +1,5 @@
 <?php
-$conn = new PDO("mysql:host=localhost:3306;dbname=envantertestleri", "envantertestleri", "r7_26sp6Y");
+$conn = new PDO("mysql:host=localhost;dbname=titizagrogrup", "root", "");
 $conn->exec("SET NAMES UTF8");
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

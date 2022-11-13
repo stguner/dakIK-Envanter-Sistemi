@@ -24,7 +24,7 @@
 			<header class="border-bottom">
 				<div class="nav col-4 col-md-auto pt-3 pb-3 w-100" style="padding-left: 16px; display: flex;">
 					<div>
-						<a href="index.php" style="text-decoration: none;">dakik</a> ©
+						<a href="../index.php" style="text-decoration: none;">dakik</a> ©
 						<span> / Yönetici Girişi</span>
 					</div>
 				</div>
