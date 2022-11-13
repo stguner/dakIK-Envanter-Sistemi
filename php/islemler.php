@@ -35,11 +35,10 @@ switch($_GET['mode']){
                 echo $e->faultstring;
             }
         
-            $kontrol = $conn->query("SELECT * FROM `cevaplar` WHERE tckn=$tckn");
+            $kontrol = $conn->query("SELECT * FROM `cevaplar`");
             $count = $kontrol->rowCount();
-            if($arr[0] && $count == 0){
+            if($arr[0]){
                 $formKontrol = $conn->query("INSERT INTO cevaplar (tckn,telNo,ad,soyad,cinsiyet,dogumTarihi,email,burc,baslangic) VALUES ('$tckn','$telNo','$kullaniciAdi','$kullaniciSoyadi','$cinsiyet','$dogumTarihi','$email','$burc','$baslangic')");
-                $arr[1] = true;
             }
             echo json_encode($arr); // JS'e array göndermek için kullanırız
 
@@ -70,8 +69,10 @@ switch($_GET['mode']){
 
 
     case 'sonuclar':
-        if(isset($_GET["tckn"])) {
-            $formKontrol = $conn->query("SELECT * FROM cevaplar WHERE tckn=".$_GET["tckn"]);
+        if($_GET) {
+            $tckn = $_GET["tckn"];
+            $kayit_id = $_GET["kayit_id"];
+            $formKontrol = $conn->query("SELECT * FROM cevaplar WHERE tckn=$tckn and kayit_id=$kayit_id");
             $result = $formKontrol->fetch(PDO::FETCH_ASSOC);
             $count = $formKontrol->rowCount();
             if ($count > 0) {

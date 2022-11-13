@@ -3,6 +3,7 @@ window.onload = function () {
 };
 
 const tckn = parseInt(document.getElementById("tckn").innerHTML);
+const kayit_id = parseInt(document.getElementById("kayit_id").innerHTML);
 const KTsoruSayisi = 40;
 const DTsoruSayisi = 35;
 const ETsoruSayisi = 39;
@@ -28,7 +29,7 @@ function sonucAc() {
       async: false,
       type: "GET",
       url: "islemler.php?mode=sonuclar",
-      data: { tckn: tckn },
+      data: "tckn="+ tckn + "&kayit_id=" + kayit_id,
       success: function (response) {
         var sonuc = JSON.parse(response);
         

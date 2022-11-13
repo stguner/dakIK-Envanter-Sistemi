@@ -1,8 +1,9 @@
 <?php
 include 'config.php';
-$kullanicisor=$conn->prepare("SELECT * FROM cevaplar where tckn=:tckn");
+$kullanicisor=$conn->prepare("SELECT * FROM cevaplar where tckn=:tckn and kayit_id=:kayit_id");
 $kullanicisor->execute(array(
-  'tckn' => $_GET['tckn']
+  'tckn' => $_GET['tckn'],
+  'kayit_id' => $_GET['kayit_id']
   ));
   $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -69,6 +70,7 @@ $kullanicisor->execute(array(
 						<br>
 						Envanter Testi Sonuçları
 					</h1>
+					<div id="kayit_id"><?php echo $kullanicicek['kayit_id'] ?></div>
 					<p id="dgt"></p>
 					<hr>
 					<div class="bilgiler table-responsive">

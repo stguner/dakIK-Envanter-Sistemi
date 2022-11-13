@@ -690,35 +690,6 @@ include 'php/config.php';
 								</div>
 							</div>
 						</div>
-						<div id="kullanilmisTCKN" class="modal fade" tabindex="-1" style="padding-right: 17px; display: none;">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">
-											<center><b><i
-														class="fa-solid fa-exclamation p-2"></i>Bu TCKN daha önce kullanılmış.</b>
-											</center>
-										</h5>
-										<i class="fa-solid fa-circle-xmark exit" style="scale:2; cursor:pointer;"
-											onclick="destroyKullanilmisTCKN()"></i>
-									</div>
-
-									<div class="modal-body">
-										<p style="text-align:justify;">
-											Verilerinizi silip yeni bir teste başlamak için <b>'SİL'</b> butonuna, teste kaldığınız yerden 
-											devam etmek için <b>'DEVAM'</b> butonuna tıklayınız.
-										</p>
-									</div>
-
-									<div class="modal-footer">
-										<div class="row w-100" style="justify-content:space-between;">
-										<button type="button" class="btn bg-danger w-25" onclick="tcknSil()">SİL</button>
-										<button type="button" class="btn bg-primary w-25" onclick="destroyKullanilmisTCKN()">DEVAM</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 						<!-- İkinci Sayfa SONU-->
 						<!-- Üçüncü Sayfa BAŞLANGIÇ-->
 						<div class="row pb-6" style="display: none;" id="div3">
