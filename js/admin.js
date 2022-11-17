@@ -129,7 +129,7 @@ function KTgrafikCiz(otoriter,neseli,sakin,titiz){
     document.getElementById("sakin").innerHTML += sakin;
     document.getElementById("titiz").innerHTML += titiz;
 
-    var xValues = ["Otoriter", "neseli", "sakin", "titiz"];
+    var xValues = ["Otoriter", "Neşeli & Hayalci", "Sakin", "Titiz"];
     var yValues = [otoriter, neseli, sakin, titiz];
     var barColors = [
         "red",
@@ -161,7 +161,7 @@ function DTgrafikCiz(gdp,bdp,pdp){
         type: "bar",
         data: {
             labels: [
-                "Kişilik D. Puanı",
+                "Girişken D. Puanı",
                 "Baskıcı D. Puanı",
                 "Pasif D. Puanı"
               ],
@@ -171,21 +171,21 @@ function DTgrafikCiz(gdp,bdp,pdp){
                   backgroundColor: "pink",
                   borderColor: "red",
                   borderWidth: 1,
-                  data: [75, (25*2.14285714285714).toFixed(2), (25*2.5).toFixed(2)]
+                  data: [75, (25).toFixed(2), (25).toFixed(2)]
                 },
                 {
                   label: "En Yüksek",
                   backgroundColor: "lightblue",
                   borderColor: "blue",
                   borderWidth: 1,
-                  data: [85, (35*2.14285714285714).toFixed(2), (30*2.5).toFixed(2)]
+                  data: [85, (35).toFixed(2), (30).toFixed(2)]
                 },
                 {
                   label: "Kişinin Puanı",
                   backgroundColor: "lightgreen",
                   borderColor: "green",
                   borderWidth: 1,
-                  data: [(gdp*100/72).toFixed(2),((bdp*100/36)*2.14285714285714).toFixed(2),((pdp*100/32)*2.5).toFixed(2)]
+                  data: [(gdp*100/72).toFixed(2),((bdp*100/36)).toFixed(2),((pdp*100/32)).toFixed(2)]
                 }
               ]
         },

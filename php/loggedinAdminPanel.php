@@ -23,12 +23,12 @@ include 'config.php';
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 d-flex w-100" style="justify-content:space-between;">
 		<div class="leftSideNavbar w-50" style="display:flex; justify-content:left; padding-left: 16px;">
-			<a class="navbar-brand" href="loggedinAdminPanel"> dakİK Envanter Testleri</a>
+			<a class="navbar-brand" href="loggedinAdminPanel.php"> dakİK Envanter Testleri</a>
 		</div>
 		<div class="rightSideNavbar w-50" style="display:flex; justify-content:right; padding-right: 16px;">
 			<ul class="nav nav-pills anasayfa" style="padding-right: 16px;">
 				<li class="nav-item">
-					<a href="loggedinAdminPanel" class="nav-link active" aria-current="page" >
+					<a href="loggedinAdminPanel.php" class="nav-link active" aria-current="page" >
 						<i class="fa-solid fa-house pt-1"></i>
 						Anasayfa
 					</a>
@@ -46,7 +46,7 @@ include 'config.php';
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="../index">Çıkış Yap</a></li>
+					<li><a class="dropdown-item" href="../index.php">Çıkış Yap</a></li>
 				</ul>
 			</div>
 		</div>
@@ -76,18 +76,16 @@ include 'config.php';
 				$query->execute();
 				if($query->rowCount()){
 					?>
-							<table class="table table-hover text-nowrap" id="AranabilirTablo">
+							<table class="table table-hover text-nowrap table-bordered table-striped" id="AranabilirTablo">
 								<thead>
 									<tr>
-										<th>#</th>
+										<th id="deneme"> # </th>
 										<th>Ad</th>
 										<th>Soyad</th>
-										<th>Başlangıç</th>
-										<th>Bitiş</th>
-										<th>Telefon Numarası</th>
+										<th>Zaman</th>
+										<th>Telefon</th>
 										<th>Cinsiyet</th>
 										<th>TCKN</th>
-										<th>Email</th>
 										<th>Doğum Günü</th>
 										<th></th>
 									</tr>
@@ -99,17 +97,24 @@ include 'config.php';
 										<td><?php echo $i; $i++; ?></td>
 										<td><?php echo $row['ad'] ?></td>
 										<td><?php echo $row['soyad'] ?></td>
-										<td><?php $parca2 = explode(" ",$row['baslangic']); echo $parca2[0],' - ',$parca2[1]; ?></td>
-										<td><?php if($row['bitis'] != "") {
+										<td><?php $parca2 = explode(" ",$row['baslangic']); echo $parca2[0],' - ',$parca2[1]; ?>
+										<br>
+										<?php if($row['bitis'] != "") {
 											 $parca = explode(" ",$row['bitis']); echo $parca[0],' - ',$parca[1];}else{
 												echo "Bitirilmemiş";
-											} ?></td>
+										} ?>
+										</td>
 										<td><?php echo $row['telNo'] ?></td>
 										<td><?php echo $row['cinsiyet'] ?></td>
 										<td><?php echo $row['tckn'] ?></td>
-										<td><?php echo $row['email'] ?></td>
-										<td><?php echo $row['dogumTarihi'][8],$row['dogumTarihi'][9]?><span>.</span><?php echo $row['dogumTarihi'][5],$row['dogumTarihi'][6]?><span>.</span><?php echo $row['dogumTarihi'][0],$row['dogumTarihi'][1],$row['dogumTarihi'][2],$row['dogumTarihi'][3]?></td>
-										<td><a href="adminKisiBilgileri?tckn=<?php echo $row['tckn']?>&kayit_id=<?php echo $row['kayit_id']?>"><button
+										<td><?php echo $row['dogumTarihi'][8],$row['dogumTarihi'][9]?><span>.</span><?php echo $row['dogumTarihi'][5],$row['dogumTarihi'][6]?><span>.</span><?php echo $row['dogumTarihi'][0],$row['dogumTarihi'][1],$row['dogumTarihi'][2],$row['dogumTarihi'][3],' - '?>
+										<?php
+										$dogumTarihi = $row['dogumTarihi'];
+										$bugun = date("Y-m-d");
+										$diff = date_diff(date_create($dogumTarihi), date_create($bugun));
+										echo 'Yaş '.$diff->format('%y'),' ',$row['burc']; ?>
+										</td>
+										<td><a href="adminKisiBilgileri.php?tckn=<?php echo $row['tckn']?>&kayit_id=<?php echo $row['kayit_id']?>"><button
 											class="btn btn-primary py-0">Gözat</button></a></td>
 									</tr>
 									<?php } ?>
@@ -129,18 +134,19 @@ include 'config.php';
 
 	</div>
 	<script>
- function tabloarama() {
-  var e, t, n, a, l;
-  for (e = document.getElementById("aramakutusu").value.toUpperCase(), t = document.getElementById("AranabilirTablo").getElementsByTagName("tr"), l = 1; l < t.length; l++) {
+ 	function tabloarama() {
+  	var e, t, n, a, l;
+  	for (e = document.getElementById("aramakutusu").value.toUpperCase(), t = document.getElementById("AranabilirTablo").getElementsByTagName("tr"), l = 1; l < t.length; l++) {
     t[l].style.display = "none", n = t[l].getElementsByTagName("td");
     for (var m = 0; m < n.length; m++)
       if ((a = t[l].getElementsByTagName("td")[m]) && a.innerHTML.toUpperCase().indexOf(e) > -1) {
         t[l].style.display = "";
         break
       }
-  }
-}
-</script>
+	}
+	}
+	</script>
+	<script src="dakik.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 	<script src="https://kit.fontawesome.com/35e8266fdf.js" crossorigin="anonymous"></script>
 </body>

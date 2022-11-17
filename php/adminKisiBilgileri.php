@@ -31,12 +31,12 @@ $kullanicisor->execute(array(
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 d-flex w-100" style="justify-content:space-between;">
 		<div class="leftSideNavbar w-50" style="display:flex; justify-content:left; padding-left: 16px;">
-			<a class="navbar-brand" href="loggedinAdminPanel"> dakİK Envanter Testleri</a>
+			<a class="navbar-brand" href="loggedinAdminPanel.php"> dakİK Envanter Testleri</a>
 		</div>
 		<div class="rightSideNavbar w-50" style="display:flex; justify-content:right; padding-right: 16px;">
 			<ul class="nav nav-pills anasayfa" style="padding-right: 16px;">
 				<li class="nav-item">
-					<a href="loggedinAdminPanel" class="nav-link active" aria-current="page">
+					<a href="loggedinAdminPanel.php" class="nav-link active" aria-current="page">
 						<i class="fa-solid fa-house pt-1"></i>
 						Anasayfa
 					</a>
@@ -54,7 +54,7 @@ $kullanicisor->execute(array(
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="../index">Çıkış Yap</a></li>
+					<li><a class="dropdown-item" href="../index.php">Çıkış Yap</a></li>
 				</ul>
 			</div>
 		</div>
@@ -70,7 +70,7 @@ $kullanicisor->execute(array(
 						<br>
 						Envanter Testi Sonuçları
 					</h1>
-					<div id="kayit_id"><?php echo $kullanicicek['kayit_id'] ?></div>
+					<div id="kayit_id" style="display:none;"><?php echo $kullanicicek['kayit_id'] ?></div>
 					<p id="dgt"></p>
 					<hr>
 					<div class="bilgiler table-responsive">
@@ -79,13 +79,11 @@ $kullanicisor->execute(array(
 								<tr>
 									<th>Ad</th>
 									<th>Soyad</th>
-									<th>Başlangıç</th>
-									<th>Bitiş</th>
+									<th>Zaman</th>
 									<th>İletişim</th>
 									<th>Cinsiyet</th>
 									<th>TCKN</th>
 									<th>Doğum Günü</th>
-									<th>Burcu</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -97,10 +95,9 @@ $kullanicisor->execute(array(
 										<?php echo $kullanicicek['soyad'] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="baslangic">
-										<?php $parca2 = explode(" ",$kullanicicek['baslangic']); echo $parca2[0],' - ',$parca2[1]; ?>
-									</td>
-									<td style="overflow:hidden; white-space:nowrap; " id="bitis">
-										<?php if($kullanicicek['bitis'] != "") {
+										<!-- Başlangıç --><?php $parca2 = explode(" ",$kullanicicek['baslangic']); echo $parca2[0],' - ',$parca2[1]; ?>
+										<br>
+										<!-- Bitiş --><?php if($kullanicicek['bitis'] != "") {
 											 $parca = explode(" ",$kullanicicek['bitis']); echo $parca[0],' - ',$parca[1];}else{
 												echo "Bitirilmemiş";
 											} ?>
@@ -138,10 +135,12 @@ $kullanicisor->execute(array(
 										<?php echo $kullanicicek['tckn'] ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap; " id="dogumTarihi">
-										<?php echo $kullanicicek['dogumTarihi'][8],$kullanicicek['dogumTarihi'][9]?><span>.</span><?php echo $kullanicicek['dogumTarihi'][5],$kullanicicek['dogumTarihi'][6]?><span>.</span><?php echo $kullanicicek['dogumTarihi'][0],$kullanicicek['dogumTarihi'][1],$kullanicicek['dogumTarihi'][2],$kullanicicek['dogumTarihi'][3] ?>
-									</td>
-									<td style="overflow:hidden; white-space:nowrap; " id="burc">
-										<?php echo $kullanicicek['burc'] ?>
+										<?php echo $kullanicicek['dogumTarihi'][8],$kullanicicek['dogumTarihi'][9]?><span>.</span><?php echo $kullanicicek['dogumTarihi'][5],$kullanicicek['dogumTarihi'][6]?><span>.</span><?php echo $kullanicicek['dogumTarihi'][0],$kullanicicek['dogumTarihi'][1],$kullanicicek['dogumTarihi'][2],$kullanicicek['dogumTarihi'][3],' - '?>
+										<?php
+										$dogumTarihi = $kullanicicek['dogumTarihi'];
+										$bugun = date("Y-m-d");
+										$diff = date_diff(date_create($dogumTarihi), date_create($bugun));
+										echo 'Yaş '.$diff->format('%y'),' - ',$kullanicicek['burc']; ?>
 									</td>
 									<td style="overflow:hidden; white-space:nowrap;text-align:center;" id="mail">
 									<!-- <a href="islemler.php?mode=mailGonder"> -->

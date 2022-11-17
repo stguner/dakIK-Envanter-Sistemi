@@ -28,11 +28,11 @@ include 'php/config.php';
 				<div class="nav col-4 col-md-auto pt-3 pb-3 w-100"
 					style="padding-left: 16px;display:flex; justify-content:space-between;">
 					<div>
-						<a href="index" style="text-decoration: none;">dakik</a> ©
+						<a href="index.php" style="text-decoration: none;">dakik</a> ©
 						<span> / Kişilik ve Davranış Testi</span>
 					</div>
 					<div style="padding-right: 16px; text-align:right;">
-						<a href="php/adminPanel" style="text-decoration: none;">Yönetici Girişi</a>
+						<a href="php/adminPanel.php" style="text-decoration: none;">Yönetici Girişi</a>
 					</div>
 				</div>
 			</header>
