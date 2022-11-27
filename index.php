@@ -797,7 +797,7 @@ include 'php/config.php';
       <span class="text-muted footerDakik">© 2022 dakİK</span>
     </div>
 	<div class="row">
-		<div class="col-md-12 text-muted">
+		<div class="col-md-12 text-muted" style="text-align:justify">
 			<div id="mmy" style="opacity:0;">Mehmet Mesut Yılmaz</div>
 			<div id="stg" style="opacity:0;">Süleyman Türker Güner</div>
 			<div id="ed" style="opacity:0;">Enes Demirtaş</div>
