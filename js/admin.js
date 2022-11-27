@@ -54,7 +54,7 @@ function sonucAc() {
     otoriter = ((KTB/40)*100);
     sakin = ((KTC/40)*100);
     titiz = ((KTD/40)*100);
-    KTgrafikCiz(otoriter,neseliVeHayalci,sakin,titiz);
+    KTgrafikCiz(otoriter.toFixed(2),neseliVeHayalci.toFixed(2),sakin.toFixed(2),titiz.toFixed(2));
 
     function DTSonuclari(type, data, low, high) {
       if (data < low) {

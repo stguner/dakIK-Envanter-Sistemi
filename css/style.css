@@ -160,7 +160,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .footer:hover #stg{
-  transform: translate(-100%, 0);
   opacity: 1 !important;
 }
 
@@ -169,7 +168,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .footer:hover #ed{
-  transform: translate(-100%, 0);
   opacity: 1 !important;
 }
 
@@ -178,7 +176,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .footer:hover #mmy{
-  transform: translate(-100%, 0);
   opacity: 1 !important;
 }
 
